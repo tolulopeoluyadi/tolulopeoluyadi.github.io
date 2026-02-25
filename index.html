@@ -4,120 +4,98 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tolulope Oluyadi — MSIDBT Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0B0E11;
-  --surface: #13171C;
-  --surface-hover: #1A1F26;
-  --border: #252B33;
-  --text: #E8ECF1;
-  --text-muted: #8B95A3;
-  --accent: #E8A838;
-  --accent-glow: rgba(232,168,56,0.15);
-  --accent2: #38B2AC;
-  --accent3: #A78BFA;
-  --white: #FFFFFF;
-  --slide-max: 1100px;
+  --ink: #f0eae2;
+  --bg: #141216;
+  --bg2: #1c1a20;
+  --bg3: #252229;
+  --pink: #e8729a;
+  --pink-soft: #f2a0bc;
+  --pink-glow: rgba(232,114,154,0.12);
+  --pink-deep: #c4527a;
+  --teal: #5ec4b6;
+  --teal-glow: rgba(94,196,182,0.1);
+  --gold: #e8c364;
+  --gold-glow: rgba(232,195,100,0.1);
+  --terracotta: #d4775a;
+  --terracotta-glow: rgba(212,119,90,0.1);
+  --muted: #8a8494;
+  --border: rgba(255,255,255,0.07);
+  --card: rgba(255,255,255,0.035);
+  --card-hover: rgba(255,255,255,0.06);
+  --shadow: rgba(0,0,0,0.3);
+  --danger: #d4625a;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: 'Outfit', sans-serif;
   background: var(--bg);
-  color: var(--text);
+  color: var(--ink);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-.progress-bar {
-  position: fixed; top:0; left:0; height:3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  z-index: 1000;
-  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-nav {
-  position: fixed; top:0; left:0; right:0;
-  z-index: 999;
-  background: rgba(11,14,17,0.85);
-  backdrop-filter: blur(20px);
+/* ─── NAVIGATION ─── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(24px);
+  background: rgba(20,18,22,0.8);
   border-bottom: 1px solid var(--border);
-  padding: 0 40px;
-  height: 60px;
-  display: flex; align-items: center; justify-content: space-between;
 }
 
-.nav-brand {
+.nav-logo {
   font-family: 'DM Serif Display', serif;
   font-size: 18px;
-  color: var(--accent);
-  letter-spacing: 0.02em;
+  color: var(--ink);
+  letter-spacing: -0.5px;
 }
-
-.nav-center { display: flex; align-items: center; }
 
 .nav-dots { display: flex; gap: 8px; align-items: center; }
 
 .nav-dot {
   width: 10px; height: 10px;
   border-radius: 50%;
-  background: var(--border);
-  border: none;
+  background: transparent;
+  border: 1.5px solid var(--muted);
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
 }
 
 .nav-dot.active {
-  background: var(--accent);
-  box-shadow: 0 0 12px var(--accent-glow);
-  transform: scale(1.2);
+  background: var(--pink);
+  border-color: var(--pink);
+  transform: scale(1.3);
+  box-shadow: 0 0 10px rgba(232,114,154,0.4);
 }
 
-.nav-dot:hover { background: var(--text-muted); }
+.nav-dot:hover { border-color: var(--pink-soft); }
 
-.nav-dot .tooltip {
-  position: absolute;
-  bottom: -32px; left: 50%;
-  transform: translateX(-50%);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-  font-size: 11px;
-  padding: 4px 10px;
-  border-radius: 6px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s;
-}
-
-.nav-dot:hover .tooltip { opacity:1; }
-
-.nav-label {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-left: 12px;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.nav-keys {
-  display: flex; gap: 6px; align-items: center;
-  font-size: 11px; color: var(--text-muted);
-}
-
-.key-hint {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 2px 8px;
+.nav-counter {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-left: 12px;
+}
+
+/* ─── PROGRESS BAR ─── */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--pink), var(--pink-soft));
+  z-index: 200;
+  transition: width 0.3s ease;
 }
 
 /* ─── SLIDES ─── */
@@ -126,546 +104,623 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 40px 60px;
+  padding: 100px 60px 60px;
   position: relative;
-  overflow: hidden;
-}
-
-.slide-inner {
-  max-width: var(--slide-max);
-  width: 100%;
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.slide-inner.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.slide.visible { opacity: 1; transform: translateY(0); }
 
-/* TITLE SLIDE */
-.title-slide { text-align: center; }
+/* ─── TITLE SLIDE ─── */
+.title-slide {
+  flex-direction: column;
+  text-align: center;
+  background: radial-gradient(ellipse at 30% 20%, rgba(232,114,154,0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, rgba(94,196,182,0.04) 0%, transparent 50%),
+              var(--bg);
+  padding-top: 80px;
+}
 
 .title-tag {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-glow);
-  padding: 6px 16px;
-  border-radius: 100px;
+  color: var(--pink);
   margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.3s forwards;
+  background: rgba(232,114,154,0.06);
+  border: 1px solid rgba(232,114,154,0.15);
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 100px;
 }
 
 .title-name {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(48px, 7vw, 96px);
-  line-height: 1.05;
-  color: var(--white);
-  margin-bottom: 20px;
+  font-size: clamp(64px, 10vw, 130px);
+  line-height: 1.0;
+  letter-spacing: -3px;
+  color: #fff;
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.5s forwards;
 }
 
-.title-name span {
-  display: block;
-  color: var(--accent);
+.title-hero-tagline {
+  font-family: 'DM Serif Display', serif;
   font-style: italic;
+  font-size: clamp(48px, 7vw, 100px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: var(--pink);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.7s forwards;
 }
 
-.title-sub {
+.title-desc {
   font-size: 18px;
-  color: var(--text-muted);
-  max-width: 600px;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 680px;
+  line-height: 1.7;
   margin: 0 auto 48px;
-  line-height: 1.6;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.9s forwards;
 }
 
-.title-meta {
+.title-pills {
   display: flex;
-  gap: 32px;
+  gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.6s 1.1s forwards;
 }
 
-.meta-chip {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 13px;
-  color: var(--text-muted);
-  background: var(--surface);
+.title-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
   border: 1px solid var(--border);
-  padding: 8px 16px;
-  border-radius: 8px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink);
+  background: rgba(255,255,255,0.02);
 }
 
-.meta-chip .dot {
-  width: 6px; height: 6px;
+.title-pill-dot {
+  width: 8px; height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
-/* THEME */
-.theme-quote {
+.title-pill-dot.pink { background: var(--pink); }
+.title-pill-dot.teal { background: var(--teal); }
+.title-pill-dot.gold { background: var(--gold); }
+
+/* ─── SHARED ─── */
+.content { max-width: 1060px; width: 100%; }
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 12px;
+}
+
+.section-title {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(28px, 4vw, 48px);
-  line-height: 1.3;
-  color: var(--white);
-  max-width: 800px;
-  margin-bottom: 48px;
-  padding-left: 24px;
-  border-left: 3px solid var(--accent);
+  font-size: clamp(34px, 4.2vw, 52px);
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  line-height: 1.15;
+  color: var(--ink);
 }
 
-.pillars {
+.section-subtitle {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 780px;
+  margin-bottom: 28px;
+}
+
+/* ─── CARDS ─── */
+.sample-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
 }
 
-.pillar {
-  background: var(--surface);
+.sample-card {
+  background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 28px 24px;
-  transition: all 0.3s ease;
-  cursor: default;
+  border-radius: 16px;
+  padding: 32px;
+  cursor: pointer;
+  transition: all 0.35s ease;
   position: relative;
   overflow: hidden;
 }
 
-.pillar::before {
+.sample-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 16px 16px 0 0;
+  transition: height 0.35s ease;
+}
+
+.sample-card:nth-child(1)::before { background: var(--terracotta); }
+.sample-card:nth-child(2)::before { background: var(--teal); }
+.sample-card:nth-child(3)::before { background: var(--gold); }
+
+.sample-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px var(--shadow);
+  background: var(--card-hover);
+  border-color: transparent;
+}
+
+.sample-card:hover::before { height: 6px; }
+
+.card-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 40px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.sample-card:nth-child(1) .card-number { color: rgba(212,119,90,0.2); }
+.sample-card:nth-child(2) .card-number { color: rgba(94,196,182,0.2); }
+.sample-card:nth-child(3) .card-number { color: rgba(232,195,100,0.2); }
+
+.card-type {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.card-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.card-desc { font-size: 15px; color: var(--muted); line-height: 1.6; }
+
+.card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+
+.card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.04);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+/* ─── DETAIL BLOCKS ─── */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.detail-block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+}
+
+.detail-block-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 14px;
+}
+
+.detail-block-title.teal { color: var(--teal); }
+.detail-block-title.gold { color: var(--gold); }
+.detail-block-title.terracotta { color: var(--terracotta); }
+
+.detail-item {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink);
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.detail-item:last-child { border-bottom: none; }
+.detail-item strong { font-weight: 600; color: #fff; }
+.detail-full { grid-column: 1 / -1; }
+
+.badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-right: 4px;
+}
+
+.badge-terra { background: var(--terracotta-glow); color: var(--terracotta); border: 1px solid rgba(212,119,90,0.2); }
+.badge-teal { background: var(--teal-glow); color: var(--teal); border: 1px solid rgba(94,196,182,0.2); }
+.badge-gold { background: var(--gold-glow); color: var(--gold); border: 1px solid rgba(232,195,100,0.2); }
+
+/* ─── PAIN GRID ─── */
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.pain-grid-item {
+  background: rgba(212,98,90,0.05);
+  border: 1px solid rgba(212,98,90,0.12);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.pain-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: rgba(212,98,90,0.1);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.pain-title { font-weight: 600; font-size: 16px; color: var(--danger); margin-bottom: 6px; }
+.pain-desc { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+/* ─── COMPARISON TABLE ─── */
+.comparison-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.comparison-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 20px;
+  text-align: left;
+}
+
+.comparison-table th:first-child { background: rgba(232,114,154,0.06); color: var(--pink); width: 25%; }
+.comparison-table th:nth-child(2) { background: rgba(255,255,255,0.03); color: var(--muted); }
+.comparison-table th:nth-child(3) { background: rgba(94,196,182,0.04); color: var(--teal); width: 30%; }
+
+.comparison-table td {
+  padding: 14px 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--muted);
+}
+
+.comparison-table tr:last-child td { border-bottom: none; }
+.comparison-table td:first-child { color: var(--ink); font-weight: 500; background: rgba(232,114,154,0.02); }
+.comparison-table td:nth-child(3) { background: rgba(94,196,182,0.02); color: rgba(94,196,182,0.8); }
+.comparison-table td strong { color: #fff; }
+
+/* ─── IDEA TO AWARD TIMELINE ─── */
+.timeline {
+  display: flex;
+  align-items: stretch;
+  margin-top: 20px;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal), rgba(94,196,182,0.2));
+  border-radius: 2px;
+}
+
+.timeline-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 0 8px;
+}
+
+.timeline-dot {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 3px solid var(--teal);
+  margin: 18px auto 14px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s;
+}
+
+.timeline-step:hover .timeline-dot {
+  background: var(--teal);
+  box-shadow: 0 0 12px rgba(94,196,182,0.4);
+}
+
+.timeline-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--teal);
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.timeline-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.timeline-desc {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ─── RESEARCH CARDS ─── */
+.research-context {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.context-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 26px;
+  transition: all 0.3s;
+}
+
+.context-card:hover { box-shadow: 0 4px 24px var(--shadow); border-color: rgba(232,195,100,0.15); }
+
+.context-flag { font-size: 28px; margin-bottom: 10px; }
+
+.context-country {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.context-focus {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.context-details { font-size: 14px; line-height: 1.7; color: var(--muted); }
+.context-details p { margin-bottom: 8px; }
+.context-details p:last-child { margin-bottom: 0; }
+.context-details strong { color: var(--ink); }
+.context-details em { color: var(--gold); font-style: normal; }
+
+/* ─── FINDING CARDS ─── */
+.finding-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.finding-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.finding-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--gold);
+  border-radius: 12px 0 0 12px;
+}
+
+.finding-card:hover { border-color: rgba(232,195,100,0.2); box-shadow: 0 4px 20px var(--shadow); }
+
+.finding-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.finding-title { font-weight: 600; font-size: 16px; margin-bottom: 8px; line-height: 1.3; color: var(--ink); }
+.finding-body { font-size: 14px; color: var(--muted); line-height: 1.65; }
+.finding-body strong { color: var(--ink); }
+
+/* ─── OPPORTUNITY CARDS (brief) ─── */
+.opp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.opp-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.opp-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  border-radius: 12px 12px 0 0;
+  background: var(--gold);
 }
-
-.pillar:nth-child(1)::before { background: var(--accent); }
-.pillar:nth-child(2)::before { background: var(--accent2); }
-.pillar:nth-child(3)::before { background: var(--accent3); }
-
-.pillar:hover {
-  border-color: var(--text-muted);
-  transform: translateY(-2px);
-}
-
-.pillar-icon { font-size: 28px; margin-bottom: 16px; }
-
-.pillar h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--white);
-}
-
-.pillar p {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-
-/* SAMPLE HEADERS */
-.sample-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 12px;
-}
-
-.sample-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--accent);
-  background: var(--accent-glow);
-  padding: 4px 10px;
-  border-radius: 6px;
-}
-
-.sample-type {
-  font-size: 12px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.sample-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(32px, 4vw, 52px);
-  color: var(--white);
-  margin-bottom: 8px;
-  line-height: 1.15;
-}
-
-.sample-role {
-  font-size: 15px;
-  color: var(--text-muted);
-  margin-bottom: 36px;
-  line-height: 1.5;
-}
-
-/* CONTEXT CARDS */
-.context-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 32px;
-}
-
-.context-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 24px;
-}
-
-.context-card h4 {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-
-.context-card p, .context-card li {
-  font-size: 14px;
-  color: var(--text);
-  line-height: 1.6;
-}
-
-.context-card ul { list-style: none; padding: 0; }
-
-.context-card li {
-  padding: 4px 0;
-  padding-left: 16px;
-  position: relative;
-}
-
-.context-card li::before {
-  content: '\2192';
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-size: 12px;
-}
-
-.full-width { grid-column: 1 / -1; }
-
-/* TABS */
-.tabs {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 24px;
-  background: var(--surface);
-  border-radius: 10px;
-  padding: 4px;
-  border: 1px solid var(--border);
-  width: fit-content;
-}
-
-.tab {
-  padding: 8px 20px;
-  font-size: 13px;
-  font-weight: 500;
-  border: none;
-  background: transparent;
-  color: var(--text-muted);
-  cursor: pointer;
-  border-radius: 8px;
-  transition: all 0.25s ease;
-  font-family: inherit;
-}
-
-.tab.active {
-  background: var(--accent);
-  color: var(--bg);
-}
-
-.tab:hover:not(.active) { color: var(--text); }
-
-.tab-content {
-  display: none;
-  animation: fadeTab 0.4s ease;
-}
-
-.tab-content.active { display: block; }
-
-@keyframes fadeTab {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* METRICS */
-.metrics-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
-  margin: 24px 0;
-}
-
-.metric {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.metric:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-}
-
-.metric-val {
-  font-family: 'DM Serif Display', serif;
-  font-size: 28px;
-  color: var(--accent);
-  margin-bottom: 4px;
-}
-
-.metric-label {
-  font-size: 12px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-/* FLOW */
-.flow {
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
-  padding: 8px 0 16px;
-  margin: 20px 0;
-}
-
-.flow-step {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.flow-box {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px 20px;
-  min-width: 140px;
-  text-align: center;
-  transition: all 0.3s ease;
-  cursor: default;
-}
-
-.flow-box:hover {
-  border-color: var(--accent);
-  transform: scale(1.03);
-}
-
-.flow-box .step-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--accent);
-  margin-bottom: 6px;
-}
-
-.flow-box .step-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 4px;
-}
-
-.flow-box .step-desc {
-  font-size: 11px;
-  color: var(--text-muted);
-  line-height: 1.4;
-}
-
-.flow-arrow {
-  color: var(--text-muted);
-  font-size: 18px;
-  padding: 0 8px;
-  flex-shrink: 0;
-}
-
-/* INSIGHTS */
-.insights-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin: 20px 0;
-}
-
-.insight-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 20px;
-  transition: all 0.3s;
-  cursor: default;
-}
-
-.insight-card:hover {
-  border-color: var(--accent2);
-  transform: translateY(-2px);
-}
-
-.insight-card .insight-icon { font-size: 22px; margin-bottom: 10px; }
-
-.insight-card h4 {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 6px;
-}
-
-.insight-card p {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-
-/* OPPORTUNITY CARDS */
-.opp-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 28px;
-  margin-bottom: 16px;
-  transition: all 0.3s;
-}
-
-.opp-card:hover { border-color: var(--accent3); }
 
 .opp-num {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--accent3);
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
   margin-bottom: 8px;
 }
 
-.opp-card h4 {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 12px;
-}
-
-.opp-features {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-.opp-feat {
-  font-size: 12px;
-  padding: 4px 12px;
-  background: rgba(167,139,250,0.1);
-  border: 1px solid rgba(167,139,250,0.2);
-  border-radius: 6px;
-  color: var(--accent3);
-}
-
-.opp-test {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.6;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
-}
-
-.opp-test strong {
-  color: var(--text);
-  font-weight: 600;
-}
-
-/* CLOSING */
-.closing { text-align: center; }
-
-.closing-tagline {
+.opp-title {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(28px, 4vw, 44px);
-  color: var(--white);
-  margin-bottom: 24px;
-  line-height: 1.3;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--ink);
 }
 
-.closing-tagline em {
-  color: var(--accent);
-  font-style: italic;
-}
-
-.closing-body {
-  font-size: 16px;
-  color: var(--text-muted);
+.opp-desc {
+  font-size: 15px;
+  color: var(--muted);
   line-height: 1.7;
-  max-width: 640px;
-  margin: 0 auto 40px;
 }
 
-/* DECORATIVE */
-.bg-glow {
-  position: absolute;
-  width: 500px; height: 500px;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.06;
-  pointer-events: none;
-}
-
-.glow-gold { background: var(--accent); }
-.glow-teal { background: var(--accent2); }
-.glow-purple { background: var(--accent3); }
-
-/* SCROLL HINT */
-.scroll-hint {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
+/* ─── CLOSING SLIDE ─── */
+.closing-slide {
   flex-direction: column;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 40%, rgba(232,114,154,0.06) 0%, transparent 60%), var(--bg);
+}
+
+.closing-pillars {
+  display: flex;
+  gap: 32px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pillar {
+  width: 220px;
+  padding: 28px 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+  transition: all 0.3s;
+}
+
+.pillar:hover {
+  border-color: rgba(232,114,154,0.2);
+  background: var(--card-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px var(--shadow);
+}
+
+.pillar-icon { font-size: 28px; margin-bottom: 14px; }
+
+.pillar-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.pillar-desc { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+/* ─── KEY HINT ─── */
+.key-hint {
+  position: fixed;
+  bottom: 20px; right: 40px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
   align-items: center;
   gap: 8px;
-  animation: bobDown 2s ease-in-out infinite;
+  opacity: 0.5;
+  z-index: 100;
 }
 
-.scroll-hint span {
-  font-size: 11px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.key-hint:hover { opacity: 1; }
+
+.key-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; height: 24px;
+  border: 1px solid var(--muted);
+  border-radius: 5px;
+  font-size: 12px;
 }
 
-.scroll-arrow {
-  width: 20px; height: 20px;
-  border-right: 2px solid var(--text-muted);
-  border-bottom: 2px solid var(--text-muted);
-  transform: rotate(45deg);
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes bobDown {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(8px); }
-}
-
-/* RESPONSIVE */
+/* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
-  .slide { padding: 80px 20px 40px; }
-  nav { padding: 0 20px; }
-  .pillars { grid-template-columns: 1fr; }
-  .context-grid { grid-template-columns: 1fr; }
-  .insights-grid { grid-template-columns: 1fr; }
-  .flow { flex-wrap: wrap; gap: 8px; }
-  .flow-arrow { display: none; }
-  .title-meta { flex-direction: column; align-items: center; }
-  .nav-keys, .nav-label { display: none; }
+  .slide { padding: 90px 24px 40px; }
+  .nav { padding: 14px 20px; }
+  .detail-grid, .research-context, .opp-grid { grid-template-columns: 1fr; }
+  .title-details { gap: 20px; }
+  .timeline { flex-wrap: wrap; }
+  .timeline::before { display: none; }
+  .closing-pillars { gap: 16px; }
+  .pillar { width: 160px; }
+  .key-hint { display: none; }
+  .comparison-table { font-size: 12px; }
+  .comparison-table th, .comparison-table td { padding: 10px 12px; }
+}
+
+@media (max-width: 480px) {
+  .sample-cards, .finding-cards { grid-template-columns: 1fr; }
+  .pain-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -673,393 +728,499 @@ nav {
 
 <div class="progress-bar" id="progressBar"></div>
 
-<nav>
-  <div class="nav-brand">T.O. — MSIDBT Portfolio</div>
-  <div class="nav-center">
+<nav class="nav">
+  <div class="nav-logo">Tolulope Oluyadi</div>
+  <div style="display:flex;align-items:center;">
     <div class="nav-dots" id="navDots"></div>
-    <span class="nav-label" id="navLabel">Introduction</span>
-  </div>
-  <div class="nav-keys">
-    <span class="key-hint">&uarr;</span>
-    <span class="key-hint">&darr;</span>
-    <span style="margin-left:4px;">to navigate</span>
+    <span class="nav-counter" id="navCounter">01 / 08</span>
   </div>
 </nav>
 
-<!-- SLIDE 0: TITLE -->
-<section class="slide" id="slide-0" data-label="Introduction">
-  <div class="bg-glow glow-gold" style="top:-200px; right:-200px;"></div>
-  <div class="slide-inner title-slide">
-    <div class="title-tag">MSIDBT Portfolio &mdash; USC</div>
-    <h1 class="title-name">
-      Tolulope Oluyadi
-      <span>People, Process &amp; Data</span>
-    </h1>
-    <p class="title-sub">I build trustworthy systems by translating between people, process, and data &mdash; turning messy, cross-functional problems into structured, auditable solutions that scale.</p>
-    <div class="title-meta">
-      <div class="meta-chip"><div class="dot" style="background:var(--accent);"></div>Howard University &mdash; CS + Business</div>
-      <div class="meta-chip"><div class="dot" style="background:var(--accent2);"></div>Technical BA / Program Manager</div>
-      <div class="meta-chip"><div class="dot" style="background:var(--accent3);"></div>3 Work Samples</div>
-    </div>
-  </div>
-  <div class="scroll-hint">
-    <span>Scroll to explore</span>
-    <div class="scroll-arrow"></div>
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 0: TITLE                                             -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="slide title-slide visible" data-slide="0">
+  <div class="title-tag">MSIDBT Portfolio &mdash; USC</div>
+  <h1 class="title-name">Tolulope Oluyadi</h1>
+  <div class="title-hero-tagline">People, Process &amp; Data</div>
+  <p class="title-desc">I build trustworthy systems by translating between people, process, and data &mdash; turning messy, cross-functional problems into structured, auditable solutions that scale.</p>
+  <div class="title-pills">
+    <div class="title-pill"><div class="title-pill-dot pink"></div>Howard University &mdash; CS + Business</div>
+    <div class="title-pill"><div class="title-pill-dot teal"></div>Technical BA / Program Manager</div>
+    <div class="title-pill"><div class="title-pill-dot gold"></div>3 Work Samples</div>
   </div>
 </section>
 
-<!-- SLIDE 1: THEME -->
-<section class="slide" id="slide-1" data-label="Theme & Focus">
-  <div class="bg-glow glow-teal" style="bottom:-250px; left:-200px;"></div>
-  <div class="slide-inner">
-    <div class="theme-quote">
-      &ldquo;I&rsquo;m comfortable owning messy problems, aligning stakeholders, and turning learning into systems that scale.&rdquo;
-    </div>
-    <p style="color:var(--text-muted); font-size:15px; margin-bottom:40px; line-height:1.6;">MSIDBT is about navigating ambiguity across design, business, and technology. Each work sample shows the problem context, my systems approach, what I built or led, and how I measure outcomes and iterate.</p>
-    <div class="pillars">
-      <div class="pillar">
-        <div class="pillar-icon">&9881;</div>
-        <h3>Process Design</h3>
-        <p>Redesigning case intake + workflow; defining shared status taxonomies and structured handoffs across services.</p>
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 1: PORTFOLIO MAP                                     -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="1">
+  <div class="content">
+    <div class="section-label">Portfolio Overview</div>
+    <div class="section-title">Three Work Samples, One Thread</div>
+    <p class="section-subtitle">Each sample shows how I navigate ambiguity across design, business, and technology &mdash; from problem framing through measurable outcomes. Click any card to jump to its deep-dive.</p>
+    <div class="sample-cards">
+      <div class="sample-card" onclick="scrollToSlide(2)">
+        <div class="card-number">01</div>
+        <div class="card-type">Process + Product Innovation</div>
+        <div class="card-title">Case IQ Implementation</div>
+        <div class="card-desc">Serving as primary liaison between APL Legal and IT to replace a broken, manual intake process with a structured case management platform.</div>
+        <div class="card-tags">
+          <span class="card-tag">Workflow Design</span>
+          <span class="card-tag">Change Mgmt</span>
+          <span class="card-tag">Stakeholder Alignment</span>
+        </div>
       </div>
-      <div class="pillar">
-        <div class="pillar-icon">&128202;</div>
-        <h3>Measurement &amp; Evaluation</h3>
-        <p>Mixed-methods evaluation combining bibliometrics + qualitative insight to measure the impact of innovation investments.</p>
+      <div class="sample-card" onclick="scrollToSlide(4)">
+        <div class="card-number">02</div>
+        <div class="card-type">Measurement + Strategy</div>
+        <div class="card-title">Janney Grants Evaluation</div>
+        <div class="card-desc">Building a mixed-methods evaluation framework to measure 40 years of staff-driven innovation investments at JHU APL.</div>
+        <div class="card-tags">
+          <span class="card-tag">Mixed Methods</span>
+          <span class="card-tag">Bibliometrics</span>
+          <span class="card-tag">Logic Model</span>
+        </div>
       </div>
-      <div class="pillar">
-        <div class="pillar-icon">&127758;</div>
-        <h3>Human-Centered Systems</h3>
-        <p>Cross-context research translating healthcare technology adoption insights into testable product opportunities.</p>
+      <div class="sample-card" onclick="scrollToSlide(6)">
+        <div class="card-number">03</div>
+        <div class="card-type">Research + Design Thinking</div>
+        <div class="card-title">Voyager Healthcare Research</div>
+        <div class="card-desc">Obama-Chesky Voyager Scholar research across Japan and Nigeria on healthcare technology adoption, trust, and access equity.</div>
+        <div class="card-tags">
+          <span class="card-tag">Health Tech</span>
+          <span class="card-tag">Japan &amp; Nigeria</span>
+          <span class="card-tag">Trust Design</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 2: CASE IQ CONTEXT -->
-<section class="slide" id="slide-2" data-label="Case IQ: Context">
-  <div class="bg-glow glow-gold" style="top:50%; right:-300px; transform:translateY(-50%);"></div>
-  <div class="slide-inner">
-    <div class="sample-header">
-      <span class="sample-num">01</span>
-      <span class="sample-type">Project Management &amp; Process Innovation</span>
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 2: CASE IQ — THE BEFORE STATE                        -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="2">
+  <div class="content">
+    <div class="section-label"><span class="badge badge-terra">Sample 01</span> Case IQ &mdash; The Before State</div>
+    <div class="section-title">The System That Was Already Breaking</div>
+    <p class="section-subtitle">APL&rsquo;s Office of Legal Affairs supports multiple sensitive service areas &mdash; Ethics &amp; Compliance, EEO, and Audits &amp; Compliance. Before Case IQ, every one of these services ran on the same fragile, manual infrastructure.</p>
+
+    <div class="pain-grid">
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#128233;</div>
+        <div class="pain-title">Email-Driven Intake</div>
+        <div class="pain-desc">Requests arrived via email, web forms, or phone calls with no central queue. Intake depended on whoever saw the message first. No confirmation, no ticket number, no audit trail.</div>
+      </div>
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#128196;</div>
+        <div class="pain-title">Spreadsheet Tracking</div>
+        <div class="pain-desc">Case status lived in individual spreadsheets maintained by each team. Files were version-controlled manually, creating duplicate records, stale data, and no single source of truth.</div>
+      </div>
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#128274;</div>
+        <div class="pain-title">No Confidentiality Controls</div>
+        <div class="pain-desc">Sensitive EEO and ethics cases were stored alongside routine requests with no role-based access. No way to restrict visibility by case type, team, or individual &mdash; a serious defensibility risk.</div>
+      </div>
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#128260;</div>
+        <div class="pain-title">Inconsistent Handoffs</div>
+        <div class="pain-desc">When a case moved between people or teams, the handoff was informal &mdash; an email forward or verbal update. Context was lost, timelines slipped, and ownership was undocumented.</div>
+      </div>
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#128200;</div>
+        <div class="pain-title">Reporting Required Cleanup</div>
+        <div class="pain-desc">Generating a volume report or cycle-time analysis meant manually reconciling spreadsheets across teams. Data was incomplete, inconsistently categorized, and weeks out of date.</div>
+      </div>
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#128556;</div>
+        <div class="pain-title">Requester Visibility = Zero</div>
+        <div class="pain-desc">Anyone who filed a complaint had no way to check its status without emailing and waiting. This created a flood of &ldquo;status check&rdquo; follow-ups that consumed admin time and eroded trust.</div>
+      </div>
     </div>
-    <h2 class="sample-title">Case IQ Implementation</h2>
-    <p class="sample-role">Technical Business Analyst / Program Manager &mdash; APL Legal case management for Ethics &amp; Compliance, Equal Employment Opportunity, and Accommodations.</p>
-    <div class="context-grid">
+
+    <div class="detail-block detail-full" style="margin-top:24px;background:rgba(212,98,90,0.04);border-color:rgba(212,98,90,0.12);">
+      <div class="detail-block-title terracotta">&#9888;&#65039; Why This Couldn&rsquo;t Continue</div>
+      <div class="detail-item">Legal case management requires <strong>defensibility</strong> &mdash; the ability to prove, under scrutiny, that every case was handled consistently, documented completely, and routed to the right people at the right time.</div>
+      <div class="detail-item">The manual process couldn&rsquo;t provide that. Every missing timestamp, every undocumented handoff, every case that sat in someone&rsquo;s inbox without a status update was a <strong>compliance exposure</strong>.</div>
+      <div class="detail-item">The organization needed a system, but the real challenge was <strong>designing one that worked across three different service areas</strong> with different workflows, different confidentiality requirements, and different stakeholder expectations &mdash; and deploying it all at once without breaking anyone&rsquo;s active caseload.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 3: CASE IQ — MY ROLE & DESIGN THINKING               -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="3">
+  <div class="content">
+    <div class="section-label"><span class="badge badge-terra">Sample 01</span> Case IQ &mdash; My Role &amp; Design Thinking</div>
+    <div class="section-title">The Decisions I Made &amp; Why They Were Hard</div>
+    <p class="section-subtitle">I serve as the primary liaison between APL&rsquo;s Office of Legal Affairs and IT. My job is to <strong style="color:#fff;">translate competing stakeholder needs into a system that works</strong> &mdash; and deploy it across all three service areas simultaneously without disrupting active caseloads.</p>
+
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--pink);margin-top:8px;margin-bottom:16px;">Design Tradeoffs I Navigated</div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Decision</th>
+          <th>The Tension</th>
+          <th>How I Resolved It</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Shared vs. separate status models</strong></td>
+          <td>E&amp;C, EEO, and A&amp;C each have different workflows, timelines, and vocabulary. A single status model would flatten important distinctions; three separate models would kill cross-service reporting.</td>
+          <td>Designed a <strong>shared status + team-specific sub-status</strong> architecture. Top-level statuses are universal (for reporting); sub-statuses capture the nuance each team needs.</td>
+        </tr>
+        <tr>
+          <td><strong>Transparency vs. confidentiality</strong></td>
+          <td>Requesters want to see their case status in real time. But EEO and Ethics cases involve sensitive allegations where oversharing can compromise the investigation.</td>
+          <td>Built <strong>role-based visibility rules at the case-type level</strong>. Requesters see status and next-step guidance; internal investigation details remain restricted to assigned team members.</td>
+        </tr>
+        <tr>
+          <td><strong>Structured fields vs. adoption friction</strong></td>
+          <td>Reporting-quality data requires required fields and controlled vocabulary at intake. But every required field is friction that risks admins reverting to email.</td>
+          <td>Identified the <strong>minimum viable field set</strong> for defensibility (timestamps, case type, assigned owner, status) and made everything else optional-but-encouraged.</td>
+        </tr>
+        <tr>
+          <td><strong>Simultaneous rollout across 3 services</strong></td>
+          <td>Deploying to all three service areas at once meant configuring three different workflow variants, training three different teams, and migrating active cases &mdash; all without a &ldquo;quiet&rdquo; pilot period.</td>
+          <td>Built a <strong>parallel operation window</strong>: ran old process and Case IQ side-by-side for 3 weeks so teams could build confidence while active cases stayed safe. Prioritized visible quick wins first.</td>
+        </tr>
+        <tr>
+          <td><strong>Automated comms vs. personal touch</strong></td>
+          <td>Templated status-change emails scale consistency but risk feeling impersonal for sensitive cases where the requester is anxious or distrustful of the process.</td>
+          <td>Created <strong>tiered communication templates</strong>: automated for routine updates; human-triggered with editable body text for sensitive milestones.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="detail-grid" style="margin-top:28px;">
+      <div class="detail-block">
+        <div class="detail-block-title">&#128204; How I Managed the Transition</div>
+        <div class="detail-item"><strong>Stakeholder mapping:</strong> identified power users, skeptics, and champions within each service area before configuration &mdash; tailored training accordingly</div>
+        <div class="detail-item"><strong>3-week parallel operation:</strong> old process and Case IQ ran side-by-side so teams built confidence without risk of dropping active cases</div>
+        <div class="detail-item"><strong>Weekly feedback cadence:</strong> 15-minute check-ins focused on &ldquo;what&rsquo;s confusing&rdquo; and &ldquo;what&rsquo;s slower than before&rdquo; &mdash; not feature requests</div>
+        <div class="detail-item"><strong>Quick wins first:</strong> prioritized the most visible pain point (status-check emails) so users saw immediate value before confronting the learning curve</div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-title">&#128202; What I&rsquo;m Measuring &amp; Why</div>
+        <div class="detail-item"><strong>Cycle time by stage:</strong> how long cases sit in each status &mdash; to find specific bottlenecks, not just averages</div>
+        <div class="detail-item"><strong>Off-system case rate:</strong> how many cases are still tracked outside the system. This is the real adoption signal &mdash; not login counts</div>
+        <div class="detail-item"><strong>&ldquo;Status check&rdquo; email volume:</strong> if requesters are still emailing to ask &ldquo;where&rsquo;s my case?&rdquo;, the visibility features need redesign</div>
+        <div class="detail-item"><strong>Data completeness trajectory:</strong> not a point-in-time score, but a trendline &mdash; are required fields getting filled more consistently week over week?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 4: JANNEY — CONTEXT                                  -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="4">
+  <div class="content">
+    <div class="section-label"><span class="badge badge-teal">Sample 02</span> Janney Grants Evaluation</div>
+    <div class="section-title">Measuring 40 Years of Staff-Driven Innovation</div>
+    <div class="detail-grid">
+      <div class="detail-block">
+        <div class="detail-block-title teal">&#128203; The Challenge</div>
+        <div class="detail-item">Janney Grants have funded staff-driven innovation and thought leadership at JHU APL <strong>since 1984</strong></div>
+        <div class="detail-item">No formal assessment of outcomes or organizational impact had ever been conducted</div>
+        <div class="detail-item">Goal: produce <strong>actionable insight</strong> for leadership &mdash; what outcomes are generated, where value concentrates, and how to strengthen the program</div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-title teal">&#129513; Why Measurement Is Hard</div>
+        <div class="detail-item"><strong>Diverse outputs:</strong> publications, conferences, international collaborations, downstream work</div>
+        <div class="detail-item"><strong>Multi-dimensional impact:</strong> visibility, knowledge exchange, partnerships &mdash; not just counts</div>
+        <div class="detail-item"><strong>Attribution gap:</strong> Janney can be a catalyst, but outcomes appear months or years later</div>
+      </div>
+      <div class="detail-block detail-full">
+        <div class="detail-block-title teal">&#128300; Mixed-Methods Evaluation Design</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;">
+          <div>
+            <div style="font-weight:600;font-size:14px;margin-bottom:6px;color:var(--teal);">Quantitative</div>
+            <div class="detail-item" style="border:none;padding:0;">Bibliometrics, citation indicators, output counts, structured program metrics</div>
+          </div>
+          <div>
+            <div style="font-weight:600;font-size:14px;margin-bottom:6px;color:var(--teal);">Qualitative</div>
+            <div class="detail-item" style="border:none;padding:0;">Surveys, interviews, focus groups capturing collaboration, visibility, and institutional benefits</div>
+          </div>
+          <div>
+            <div style="font-weight:600;font-size:14px;margin-bottom:6px;color:var(--teal);">Case Analyses</div>
+            <div class="detail-item" style="border:none;padding:0;">Deeper looks at representative activities: funding &rarr; outputs &rarr; outcomes pathways</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 5: JANNEY — MY OWNERSHIP                             -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="5">
+  <div class="content">
+    <div class="section-label"><span class="badge badge-teal">Sample 02</span> My Ownership &amp; Process Innovation</div>
+    <div class="section-title">From Raw Data to Actionable Framework</div>
+    <div class="detail-grid">
+      <div class="detail-block">
+        <div class="detail-block-title teal">&#128736; What I Led</div>
+        <div class="detail-item">Compiled and cleaned a <strong>historical dataset</strong> of Janney activities (2022&ndash;2025)</div>
+        <div class="detail-item">Created <strong>focus/interview criteria and grouping system</strong> for representative coverage</div>
+        <div class="detail-item">Drafted and refined <strong>survey/interview instruments</strong> and data collection workflows</div>
+        <div class="detail-item">Supported <strong>logic model framing</strong> (inputs &rarr; outputs &rarr; outcomes)</div>
+        <div class="detail-item">Introduced <strong>AI-assisted workflow</strong> to scale qualitative coding with review controls</div>
+        <div class="detail-item">Built the <strong>&ldquo;Idea to Award&rdquo; process overview</strong> to improve post-award data capture</div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-title teal">&#128260; Process Innovation: &ldquo;Idea to Award&rdquo;</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;">I created an end-to-end process overview to reduce confusion for applicants and standardize post-award expectations &mdash; improving downstream measurement quality.</p>
+        <div class="timeline" style="margin-top:20px;">
+          <div class="timeline-step">
+            <div class="timeline-num">Step 1</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Pre-Application</div>
+            <div class="timeline-desc">Eligibility check &amp; idea development</div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-num">Step 2</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Submit Application</div>
+            <div class="timeline-desc">Proposal, budget &amp; timeline</div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-num">Step 3</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Application Review</div>
+            <div class="timeline-desc">Completeness &amp; alignment check</div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-num">Step 4</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Panel Evaluation</div>
+            <div class="timeline-desc">Janney committee scoring</div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-num">Step 5</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Award + Janney Talk</div>
+            <div class="timeline-desc">Funding &amp; knowledge sharing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 6: VOYAGER — DEEP CONTEXT                            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="6">
+  <div class="content">
+    <div class="section-label"><span class="badge badge-gold">Sample 03</span> Voyager Healthcare Research</div>
+    <div class="section-title">Technology, Trust &amp; Access Across Two Countries</div>
+
+    <div class="detail-block detail-full" style="margin-top:4px;background:rgba(232,195,100,0.03);border-color:rgba(232,195,100,0.12);">
+      <div class="detail-block-title gold">&#127793; Why This Research &mdash; The Personal Origin</div>
+      <div class="detail-item" style="border:none;padding:0;">During a serious health period in my family, digital tools meant to support care coordination added friction instead. The portal was confusing, information was hard to interpret, and the next step was never clear. When someone is managing fear, fatigue, and time pressure, <strong>unclear digital experiences don&rsquo;t feel like minor inconvenience &mdash; they shape what people follow through on</strong>. That experience made me care about technology as a lived experience, not just a feature set. As an Obama-Chesky Voyager Scholar, I turned that question into research: <strong>why do some healthcare technologies get adopted and trusted while others &mdash; even free, well-funded ones &mdash; sit unused?</strong></div>
+    </div>
+
+    <div class="research-context" style="margin-top:20px;">
       <div class="context-card">
-        <h4>The Before State</h4>
-        <p>Intake and tracking relied on forms, email follow-ups, and manual spreadsheets. Status visibility was limited, handoffs inconsistent, and reporting required time-consuming cleanup.</p>
+        <div class="context-flag">&#127471;&#127477;</div>
+        <div class="context-country">Japan</div>
+        <div class="context-focus">Aging Population &middot; Assistive Robotics &middot; Telemedicine</div>
+        <div class="context-details">
+          <p>Japan faces the world&rsquo;s most advanced aging crisis: over 29% of the population is 65+, the caregiver workforce is shrinking, and the government has invested billions in assistive robotics, remote monitoring, and telemedicine.</p>
+          <p>I studied how elderly patients and caregivers <strong>actually experience</strong> these tools &mdash; visiting care facilities, observing robotic-assist interactions, and interviewing patients managing chronic disease via telemedicine.</p>
+          <p><strong>Key tension:</strong> Japan has the infrastructure and the government support, but adoption among elderly patients remains uneven. The barriers are <em>human</em> &mdash; digital literacy, cognitive decline, distrust of non-face-to-face care, and the cultural expectation that healthcare is relational.</p>
+        </div>
       </div>
       <div class="context-card">
-        <h4>Why This Is Complex</h4>
-        <ul>
-          <li>Multiple services with different workflows and confidentiality needs</li>
-          <li>High bar for defensibility: audit trails, role-based access</li>
-          <li>Different user perspectives: requesters vs. admins</li>
-          <li>Change management during active operations</li>
-        </ul>
+        <div class="context-flag">&#127475;&#127468;</div>
+        <div class="context-country">Nigeria</div>
+        <div class="context-focus">Rural Access &middot; Telemedicine &middot; Infrastructure Constraints</div>
+        <div class="context-details">
+          <p>Nigeria has approximately 1 doctor per 2,500+ people, with most specialists concentrated in Lagos and Abuja. For rural patients, getting a diagnosis can mean a full day of travel and a cost many families cannot absorb.</p>
+          <p>I researched how telemedicine platforms and mobile health tools extend care to underserved populations &mdash; interviewing clinicians, patients, health workers, and the teams building these products.</p>
+          <p><strong>Key tension:</strong> The need is urgent and the potential enormous, but adoption depends on factors no one markets: <em>data costs</em> (patients avoid video calls to save bandwidth), <em>device sharing</em> (privacy on a family phone), and <em>trust in a provider you&rsquo;ve never met</em>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-block detail-full" style="margin-top:20px;">
+      <div class="detail-block-title gold">&#128269; Research Methodology</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;">
+        <div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:6px;color:var(--gold);">Field Observation</div>
+          <div style="font-size:13px;line-height:1.65;color:var(--muted);">Embedded in clinics, hospitals, care facilities, and community health centers. Observed real technology use in situ &mdash; not demos, not staged settings.</div>
+        </div>
+        <div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:6px;color:var(--gold);">Stakeholder Interviews</div>
+          <div style="font-size:13px;line-height:1.65;color:var(--muted);">Semi-structured interviews with clinicians, patients, caregivers, administrators, community health workers, and technology vendors.</div>
+        </div>
+        <div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:6px;color:var(--gold);">Comparative Synthesis</div>
+          <div style="font-size:13px;line-height:1.65;color:var(--muted);">Cross-context analysis separating universal adoption factors (trust, workflow-fit) from context-dependent ones (infrastructure, cost, regulation).</div>
+        </div>
+        <div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:6px;color:var(--gold);">Design Translation</div>
+          <div style="font-size:13px;line-height:1.65;color:var(--muted);">Findings synthesized into testable product opportunities and implementation frameworks &mdash; moving from academic insight to actionable design.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:28px;margin-bottom:16px;">Core Findings</div>
+    <div class="finding-cards">
+      <div class="finding-card">
+        <div class="finding-label">Finding 01</div>
+        <div class="finding-title">Trust Is the Feature &mdash; Not the Add-On</div>
+        <div class="finding-body">In both countries, adoption correlated most strongly with whether the patient could <strong>identify and verify the provider</strong>, understand what would happen with their data, and trust that follow-up would occur. In Nigeria, patients asked &ldquo;who is this doctor?&rdquo; before engaging; in Japan, elderly patients preferred tools their in-person doctor explicitly endorsed.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-label">Finding 02</div>
+        <div class="finding-title">Workflow-Fit Determines Survival</div>
+        <div class="finding-body">Technologies that matched existing routines were adopted. Those requiring <strong>new behaviors, extra documentation, or parallel systems</strong> were abandoned &mdash; regardless of sophistication. A clinic in Nigeria stopped using a platform because it doubled charting time. A care facility in Japan shelved a monitoring tool because it required input from already-stretched staff.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-label">Finding 03</div>
+        <div class="finding-title">Access = Friction + Affordability, Not Connectivity</div>
+        <div class="finding-body">In Nigeria, <strong>data costs actively shaped usage</strong>: patients avoided video consultations to save bandwidth, defaulting to text-based interactions that lost diagnostic richness. In Japan, elderly patients struggled with interface complexity on modern devices. &ldquo;Access&rdquo; is a design problem involving cost, literacy, device constraints, and cognitive load.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-label">Finding 04</div>
+        <div class="finding-title">Human Support Loops Are Non-Negotiable</div>
+        <div class="finding-body">In every high-adoption case, there was a person &mdash; a community health worker, a family member, a clinic navigator &mdash; who <strong>helped the patient use the tool</strong>. Technology without &ldquo;someone to ask&rdquo; consistently failed at the last mile. The human loop isn&rsquo;t a workaround; it&rsquo;s part of the product.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-label">Finding 05</div>
+        <div class="finding-title">Equity Can Be Designed In From Day One</div>
+        <div class="finding-body">Products designed for the most constrained users &mdash; <strong>low literacy, low bandwidth, older devices, shared phones</strong> &mdash; were more scalable and trusted by all user groups. A telemedicine tool in Nigeria designed for 2G networks worked better for urban users too. Designing for the edge case first improved the product for everyone.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-label">Finding 06</div>
+        <div class="finding-title">Infrastructure Redefines &ldquo;Usable&rdquo;</div>
+        <div class="finding-body">A tool that works on stable Wi-Fi fails where power is intermittent or devices are shared. In Japan, even with strong infrastructure, <strong>reliability expectations among elderly users were extremely high</strong> &mdash; a single crash eroded willingness to try again. The minimum viable experience is set by the user&rsquo;s worst-case environment.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 3: CASE IQ SOLUTION -->
-<section class="slide" id="slide-3" data-label="Case IQ: Solution">
-  <div class="slide-inner">
-    <div class="sample-header">
-      <span class="sample-num">01</span>
-      <span class="sample-type">Solution Design</span>
-    </div>
-    <h2 class="sample-title" style="font-size:clamp(28px,3.5vw,42px);">From Email + Spreadsheets &rarr; Structured System</h2>
-    <p class="sample-role">Goal: Clear workflow steps, real-time visibility, and built-in measurement from day one.</p>
-
-    <div class="tabs" id="caseiqTabs">
-      <button class="tab active" data-tab="capabilities">Capabilities</button>
-      <button class="tab" data-tab="decisions">Design Decisions</button>
-      <button class="tab" data-tab="delivery">Delivery Plan</button>
-    </div>
-
-    <div class="tab-content active" id="tab-capabilities">
-      <div class="metrics-row">
-        <div class="metric"><div class="metric-val">&harr;</div><div class="metric-label">Requester + Admin Visibility</div></div>
-        <div class="metric"><div class="metric-val">&circlearrowright;</div><div class="metric-label">Structured Workflows</div></div>
-        <div class="metric"><div class="metric-val">&9993;</div><div class="metric-label">Auto Communications</div></div>
-        <div class="metric"><div class="metric-val">&128274;</div><div class="metric-label">SSO + Audit Trails</div></div>
-        <div class="metric"><div class="metric-val">&128200;</div><div class="metric-label">Dashboards</div></div>
-      </div>
-      <div class="context-card" style="margin-top:16px;">
-        <h4>What Changed</h4>
-        <p>Both sides see where a case is in the process. Sub-statuses reduce ambiguity and improve handoffs. Templated emails, SSO login, tracked changes, and operational dashboards for volume, backlog, cycle time, and bottlenecks &mdash; all built-in.</p>
-      </div>
-    </div>
-
-    <div class="tab-content" id="tab-decisions">
-      <div class="insights-grid">
-        <div class="insight-card">
-          <h4>Shared Status Taxonomy</h4>
-          <p>Defined what statuses mean across services and what actions move a case forward.</p>
-        </div>
-        <div class="insight-card">
-          <h4>Standardization vs. Flexibility</h4>
-          <p>Enough structure for reporting and auditability without blocking real workflows.</p>
-        </div>
-        <div class="insight-card">
-          <h4>Data Quality from Day One</h4>
-          <p>Required fields, controlled vocabulary, and consistent timestamps designed upfront.</p>
-        </div>
-        <div class="insight-card">
-          <h4>Feedback Loop</h4>
-          <p>Pilot &rarr; measure &rarr; refine sub-statuses and templates. Iterative improvement baked in.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-content" id="tab-delivery">
-      <div class="flow">
-        <div class="flow-step">
-          <div class="flow-box"><div class="step-num">01</div><div class="step-label">Requirements</div><div class="step-desc">Stakeholder alignment on real &amp; future-state process</div></div>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-step">
-          <div class="flow-box"><div class="step-num">02</div><div class="step-label">Configure</div><div class="step-desc">Workflows, roles, templates, dashboards (iterative)</div></div>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-step">
-          <div class="flow-box"><div class="step-num">03</div><div class="step-label">UAT + Train</div><div class="step-desc">Validate with real users, refine edge cases</div></div>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-step">
-          <div class="flow-box"><div class="step-num">04</div><div class="step-label">Rollout</div><div class="step-desc">Phased adoption, monitoring, rapid iteration</div></div>
-        </div>
-      </div>
-      <div class="context-card" style="margin-top:16px;">
-        <h4>Success Metrics</h4>
-        <ul>
-          <li>Cycle time (intake &rarr; resolution) and average time-in-status</li>
-          <li>Backlog volume by status/sub-status; bottleneck identification</li>
-          <li>Reduction in &ldquo;status check&rdquo; emails</li>
-          <li>Data completeness and adoption (active users, cases in system)</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 4: JANNEY GRANTS -->
-<section class="slide" id="slide-4" data-label="Janney Grants">
-  <div class="bg-glow glow-teal" style="top:-200px; left:50%; transform:translateX(-50%);"></div>
-  <div class="slide-inner">
-    <div class="sample-header">
-      <span class="sample-num" style="background:rgba(56,178,172,0.15); color:var(--accent2);">02</span>
-      <span class="sample-type">Measurement &amp; Evaluation</span>
-    </div>
-    <h2 class="sample-title">Janney Grants Evaluation</h2>
-    <p class="sample-role">Evaluation planning and data workstream lead &mdash; summative evaluation of Janney Grants (2022&ndash;2025), a staff-driven innovation program since 1984.</p>
-
-    <div class="context-grid">
-      <div class="context-card">
-        <h4>The Problem</h4>
-        <p>Janney Grants have funded innovation for decades, but the program had never undergone formal outcome assessment. Leadership needed actionable insight on where value concentrates and how to strengthen the program.</p>
-      </div>
-      <div class="context-card">
-        <h4>Why Measurement Is Hard</h4>
-        <ul>
-          <li>Outputs are diverse: publications, conferences, international collaborations</li>
-          <li>Impact is multi-dimensional &mdash; not just counts</li>
-          <li>Attribution is tricky: outcomes appear months later</li>
-        </ul>
-      </div>
-      <div class="context-card full-width">
-        <h4>My Ownership</h4>
-        <ul>
-          <li>Compiled + cleaned historical dataset (2022&ndash;2025) for analysis and sampling</li>
-          <li>Created focus/interview criteria and grouping for representative coverage</li>
-          <li>Drafted survey/interview instruments and data collection workflows</li>
-          <li>Supported logic model framing (inputs &rarr; outputs &rarr; outcomes)</li>
-          <li>Introduced AI-assisted workflow for scaling qualitative coding with review controls</li>
-          <li>Built end-to-end &ldquo;idea to award&rdquo; process overview for applicants</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="flow" style="margin-top:24px;">
-      <div class="flow-step">
-        <div class="flow-box" style="border-color:rgba(56,178,172,0.3);"><div class="step-num" style="color:var(--accent2);">Quant</div><div class="step-label">Bibliometrics</div><div class="step-desc">Citation indicators, output counts, program metrics</div></div>
-      </div>
-      <div class="flow-arrow">+</div>
-      <div class="flow-step">
-        <div class="flow-box" style="border-color:rgba(56,178,172,0.3);"><div class="step-num" style="color:var(--accent2);">Qual</div><div class="step-label">Surveys + Interviews</div><div class="step-desc">Collaboration outcomes, visibility, institutional benefits</div></div>
-      </div>
-      <div class="flow-arrow">+</div>
-      <div class="flow-step">
-        <div class="flow-box" style="border-color:rgba(56,178,172,0.3);"><div class="step-num" style="color:var(--accent2);">Deep</div><div class="step-label">Case Analyses</div><div class="step-desc">Pathways from funding to outcomes</div></div>
-      </div>
-      <div class="flow-arrow">&rarr;</div>
-      <div class="flow-step">
-        <div class="flow-box" style="border-color:rgba(56,178,172,0.3); background:rgba(56,178,172,0.08);"><div class="step-num" style="color:var(--accent2);">Result</div><div class="step-label">Actionable Insight</div><div class="step-desc">For leadership decisions</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 5: VOYAGER RESEARCH -->
-<section class="slide" id="slide-5" data-label="Voyager Research">
-  <div class="bg-glow glow-purple" style="bottom:-200px; right:-200px;"></div>
-  <div class="slide-inner">
-    <div class="sample-header">
-      <span class="sample-num" style="background:rgba(167,139,250,0.15); color:var(--accent3);">03</span>
-      <span class="sample-type">Scientific &amp; Technological Innovation</span>
-    </div>
-    <h2 class="sample-title">Voyager Research</h2>
-    <p class="sample-role">Healthcare Technology Adoption Across Contexts &mdash; cross-context research (Japan &amp; Nigeria) translating insights into testable product opportunities.</p>
-
-    <div class="tabs" id="voyagerTabs">
-      <button class="tab active" data-tab="v-insights">Key Insights</button>
-      <button class="tab" data-tab="v-opportunities">Opportunities</button>
-    </div>
-
-    <div class="tab-content active" id="tab-v-insights">
-      <div class="insights-grid">
-        <div class="insight-card">
-          <h4>Trust Is the Feature</h4>
-          <p>Adoption rises when provider identity, privacy, and follow-up expectations are clear.</p>
-        </div>
-        <div class="insight-card">
-          <h4>Workflow-Fit Beats Cool Tech</h4>
-          <p>Tools succeed when they match real clinician and patient routines.</p>
-        </div>
-        <div class="insight-card">
-          <h4>Access = Friction + Affordability</h4>
-          <p>Device access, data plans, and comfort with tech shape outcomes.</p>
-        </div>
-        <div class="insight-card">
-          <h4>Infrastructure Shapes UX</h4>
-          <p>Reliability changes what &ldquo;usable&rdquo; means across different contexts.</p>
-        </div>
-        <div class="insight-card">
-          <h4>Human Support Loops</h4>
-          <p>Training and &ldquo;someone to ask&rdquo; matters as much as features for retention.</p>
-        </div>
-        <div class="insight-card">
-          <h4>Equity Can Be Designed In</h4>
-          <p>Designing for underserved users first improves scalability and trust for all.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-content" id="tab-v-opportunities">
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 7: VOYAGER — TESTABLE OPPORTUNITIES (BRIEF)          -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="7">
+  <div class="content">
+    <div class="section-label"><span class="badge badge-gold">Sample 03</span> From Insights to Direction</div>
+    <div class="section-title">Two Testable Product Opportunities</div>
+    <p class="section-subtitle">The research pointed to two product-level opportunities grounded in what I observed &mdash; each translating a core finding into a design direction worth testing.</p>
+    <div class="opp-grid">
       <div class="opp-card">
-        <div class="opp-num">OPPORTUNITY 01</div>
-        <h4>Trust + Continuity Layer for Telemedicine</h4>
-        <div class="opp-features">
-          <span class="opp-feat">Verified provider identity</span>
-          <span class="opp-feat">Plain-language summaries</span>
-          <span class="opp-feat">Low-bandwidth fallback</span>
-          <span class="opp-feat">Escalation paths</span>
-        </div>
-        <div class="opp-test"><strong>Test plan:</strong> 2&ndash;4 week pilot with one clinic. Measure completion rate, follow-up adherence, drop-off, patient-reported trust, and clinician time per case.</div>
+        <div class="opp-num">Opportunity 01</div>
+        <div class="opp-title">Trust &amp; Continuity Layer</div>
+        <div class="opp-desc">A lightweight layer built into telemedicine tools that addresses the #1 adoption blocker: <strong style="color:#fff;">trust</strong>. Verified provider identity, plain-language visit summaries, follow-up reminders, and low-bandwidth fallback &mdash; so the experience doesn&rsquo;t break when connectivity does. Measure: completion rate, follow-up adherence, and patient trust.</div>
       </div>
       <div class="opp-card">
-        <div class="opp-num">OPPORTUNITY 02</div>
-        <h4>Implementation Playbook for Adoption</h4>
-        <div class="opp-features">
-          <span class="opp-feat">Workflow mapping worksheet</span>
-          <span class="opp-feat">Onboarding scripts</span>
-          <span class="opp-feat">Metrics starter pack</span>
-          <span class="opp-feat">Governance cadence</span>
-        </div>
-        <div class="opp-test"><strong>Test plan:</strong> Compare &ldquo;tool only&rdquo; vs &ldquo;tool + playbook.&rdquo; Track active users/week, repeat usage, support volume, and provider satisfaction.</div>
+        <div class="opp-num">Opportunity 02</div>
+        <div class="opp-title">Implementation Playbook</div>
+        <div class="opp-desc">A structured onboarding kit for clinics adopting health tech: workflow mapping, staff training scripts, patient FAQ templates, and a first-week metrics dashboard. The insight: <strong style="color:#fff;">technology fails at the last mile without &ldquo;someone to ask.&rdquo;</strong> The playbook systematizes that human support loop. Measure: adoption rate with vs. without the playbook.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 6: CLOSING -->
-<section class="slide" id="slide-6" data-label="Why MSIDBT">
-  <div class="bg-glow glow-gold" style="top:50%; left:50%; transform:translate(-50%,-50%); width:600px; height:600px; opacity:0.04;"></div>
-  <div class="bg-glow glow-teal" style="bottom:-200px; left:-200px;"></div>
-  <div class="slide-inner closing">
-    <div class="title-tag">Why MSIDBT</div>
-    <h2 class="closing-tagline">I bridge design, business, and technology to solve <em>messy problems</em> and ship systems that scale.</h2>
-    <p class="closing-body">
-      From redesigning legal case workflows at APL, to building evaluation frameworks for decades-old innovation programs, to translating cross-cultural healthcare research into product opportunities &mdash; my work lives at the intersection of people, process, and data. MSIDBT is where I deepen that practice.
-    </p>
-    <div class="title-meta" style="margin-top:32px;">
-      <div class="meta-chip"><div class="dot" style="background:var(--accent);"></div>Process Design</div>
-      <div class="meta-chip"><div class="dot" style="background:var(--accent2);"></div>Measurement &amp; Strategy</div>
-      <div class="meta-chip"><div class="dot" style="background:var(--accent3);"></div>Human-Centered Systems</div>
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 8 (was 9): CLOSING — NO VIDEO GUIDE                  -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="slide closing-slide" data-slide="8"><!-- note: removing this line's "closing-slide" would revert to normal bg -->
+  <div class="content" style="max-width:800px;">
+    <div class="section-label" style="color:var(--pink);">What Connects It All</div>
+    <div class="section-title" style="margin-bottom:24px;">People, Process, Data</div>
+    <p style="color:var(--muted);font-size:16px;line-height:1.7;max-width:600px;margin:0 auto 40px;">Every project in this portfolio started with a messy problem that couldn&rsquo;t be solved by technology alone &mdash; it required translating between people, designing processes that hold up under pressure, and building measurement into the system from day one.</p>
+
+    <div class="closing-pillars">
+      <div class="pillar">
+        <div class="pillar-icon">&#127959;&#65039;</div>
+        <div class="pillar-title">People</div>
+        <div class="pillar-desc">Stakeholder alignment, change management, user research, trust design</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">&#9881;&#65039;</div>
+        <div class="pillar-title">Process</div>
+        <div class="pillar-desc">Workflow design, taxonomy, implementation playbooks, feedback loops</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">&#128202;</div>
+        <div class="pillar-title">Data</div>
+        <div class="pillar-desc">Mixed methods, evaluation frameworks, evidence-based iteration</div>
+      </div>
     </div>
-    <p style="margin-top:48px; font-size:14px; color:var(--text-muted);">Tolulope Oluyadi &mdash; Howard University &mdash; CS + Business</p>
+
+    <div style="margin-top:60px;padding-top:32px;border-top:1px solid var(--border);text-align:center;">
+      <div style="font-family:'DM Serif Display',serif;font-size:24px;color:var(--pink-soft);font-style:italic;max-width:500px;margin:0 auto;">Thank you for reviewing my portfolio.</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:16px;letter-spacing:1px;">TOLULOPE OLUYADI &middot; MSIDBT 2026</div>
+    </div>
   </div>
 </section>
+
+<!-- Keyboard hint -->
+<div class="key-hint">
+  <span class="key-icon">&uarr;</span>
+  <span class="key-icon">&darr;</span>
+  scroll to navigate
+</div>
 
 <script>
 const slides = document.querySelectorAll('.slide');
-const navDotsEl = document.getElementById('navDots');
-const navLabelEl = document.getElementById('navLabel');
-const progressBarEl = document.getElementById('progressBar');
-const slideLabels = [];
+const totalSlides = slides.length;
+let currentSlide = 0;
 
-slides.forEach((s, i) => {
-  const label = s.dataset.label || 'Slide ' + (i+1);
-  slideLabels.push(label);
-  const dot = document.createElement('button');
+const navDots = document.getElementById('navDots');
+for (let i = 0; i < totalSlides; i++) {
+  const dot = document.createElement('div');
   dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
-  dot.innerHTML = '<span class="tooltip">' + label + '</span>';
-  dot.addEventListener('click', () => s.scrollIntoView({ behavior: 'smooth' }));
-  navDotsEl.appendChild(dot);
-});
+  dot.addEventListener('click', () => scrollToSlide(i));
+  navDots.appendChild(dot);
+}
+
+function updateNav(index) {
+  document.querySelectorAll('.nav-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === index);
+  });
+  document.getElementById('navCounter').textContent =
+    String(index + 1).padStart(2, '0') + ' / ' + String(totalSlides).padStart(2, '0');
+  const progress = ((index) / (totalSlides - 1)) * 100;
+  document.getElementById('progressBar').style.width = progress + '%';
+}
+
+function scrollToSlide(index) {
+  slides[index].scrollIntoView({ behavior: 'smooth' });
+}
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    const inner = entry.target.querySelector('.slide-inner');
     if (entry.isIntersecting) {
-      inner.classList.add('visible');
-      const idx = [...slides].indexOf(entry.target);
-      document.querySelectorAll('.nav-dot').forEach((d,j) => d.classList.toggle('active', j === idx));
-      navLabelEl.textContent = slideLabels[idx];
-      progressBarEl.style.width = ((idx + 1) / slides.length * 100) + '%';
+      entry.target.classList.add('visible');
+      const index = parseInt(entry.target.dataset.slide);
+      currentSlide = index;
+      updateNav(index);
     }
   });
-}, { threshold: 0.4 });
+}, { threshold: 0.3 });
 
-slides.forEach(s => observer.observe(s));
+slides.forEach(slide => observer.observe(slide));
 
-let currentSlide = 0;
 document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
     e.preventDefault();
-    currentSlide = Math.min(currentSlide + 1, slides.length - 1);
-    slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+    if (currentSlide < totalSlides - 1) scrollToSlide(currentSlide + 1);
   }
   if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
     e.preventDefault();
-    currentSlide = Math.max(currentSlide - 1, 0);
-    slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+    if (currentSlide > 0) scrollToSlide(currentSlide - 1);
   }
 });
-
-const scrollObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) currentSlide = [...slides].indexOf(entry.target);
-  });
-}, { threshold: 0.5 });
-slides.forEach(s => scrollObs.observe(s));
-
-document.querySelectorAll('.tabs').forEach(tabGroup => {
-  tabGroup.querySelectorAll('.tab').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const parent = tabGroup.parentElement;
-      const target = btn.dataset.tab;
-      tabGroup.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      parent.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
-      parent.querySelector('#tab-' + target).classList.add('active');
-    });
-  });
-});
 </script>
-
 </body>
 </html>
