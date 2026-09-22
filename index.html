@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+<title>Tolulope Oluyadi | Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -716,6 +716,8 @@ body {
   .key-hint { display: none; }
   .comparison-table { font-size: 12px; }
   .comparison-table th, .comparison-table td { padding: 10px 12px; }
+  .detail-full > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+  .comparison-table { display: block; overflow-x: auto; }
 }
  
 @media (max-width: 480px) {
@@ -732,27 +734,23 @@ body {
   <div class="nav-logo">Tolulope Oluyadi</div>
   <div style="display:flex;align-items:center;">
     <div class="nav-dots" id="navDots"></div>
-    <span class="nav-counter" id="navCounter">01 / 12</span>
+    <span class="nav-counter" id="navCounter">01 / 14</span>
   </div>
 </nav>
  
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 0: TITLE                                             -->
-<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 0: TITLE -->
 <section class="slide title-slide visible" data-slide="0">
   <h1 class="title-name">Tolulope Oluyadi</h1>
   <div class="title-hero-tagline">People, Process &amp; Data</div>
-  <p class="title-desc">I build trustworthy systems by translating between people, process, and data, turning messy, cross-functional problems into structured, auditable solutions that scale.</p>
+  <p class="title-desc">I build trustworthy systems by translating between people, process, and data, turning messy, cross-functional problems into structured, auditable solutions that scale. My work spans enterprise Source-to-Pay delivery, generative AI routing, legal case management, program evaluation, and international field research.</p>
   <div class="title-pills">
-    <div class="title-pill"><div class="title-pill-dot pink"></div>Howard University &middot; CS + Business</div>
+    <div class="title-pill"><div class="title-pill-dot pink"></div>Howard University &middot; CS + Business &middot; Magna Cum Laude</div>
     <div class="title-pill"><div class="title-pill-dot teal"></div>Technical Project Manager &amp; Business Analyst &middot; JHU APL</div>
     <div class="title-pill"><div class="title-pill-dot gold"></div>5 Work Samples</div>
   </div>
 </section>
  
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 1: PORTFOLIO MAP                                     -->
-<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 1: PORTFOLIO MAP -->
 <section class="slide" data-slide="1">
   <div class="content">
     <div class="section-label">Portfolio Overview</div>
@@ -761,28 +759,53 @@ body {
     <div class="sample-cards">
       <div class="sample-card" onclick="scrollToSlide(2)">
         <div class="card-number">01</div>
+        <div class="card-type">Enterprise Platform Delivery</div>
+        <div class="card-title">ProcureHub: Source-to-Pay</div>
+        <div class="card-desc">Assistant lead on APL&rsquo;s ServiceNow Source-to-Pay implementation, consolidating fragmented purchasing procedures and legacy systems into a single platform for the entire lab.</div>
+        <div class="card-tags">
+          <span class="card-tag">ServiceNow</span>
+          <span class="card-tag">Source-to-Pay</span>
+          <span class="card-tag">QA / UAT</span>
+          <span class="card-tag">Federal Acquisition</span>
+        </div>
+      </div>
+      <div class="sample-card" onclick="scrollToSlide(5)">
+        <div class="card-number">02</div>
+        <div class="card-type">AI + Automation</div>
+        <div class="card-title">Gen-AI Intake Routing</div>
+        <div class="card-desc">Built and shipped a generative-AI routing system on ServiceNow that classifies incoming requests, routes them to the right team, and sends uncertain cases to a person. Cut triage time by 40 to 50%.</div>
+        <div class="card-tags">
+          <span class="card-tag">ServiceNow</span>
+          <span class="card-tag">Generative AI</span>
+          <span class="card-tag">Evaluation</span>
+          <span class="card-tag">Human-in-the-Loop</span>
+        </div>
+      </div>
+
+      <div class="sample-card" onclick="scrollToSlide(7)">
+        <div class="card-number">03</div>
         <div class="card-type">Process + Product Innovation</div>
         <div class="card-title">Case IQ Implementation</div>
-        <div class="card-desc">Serving as primary liaison between APL Legal and IT to replace a broken, manual intake process with a structured case management platform.</div>
+        <div class="card-desc">Served as primary liaison between APL Legal and IT to replace a manual, email-driven intake process with a structured, defensible case management platform across three sensitive service areas.</div>
         <div class="card-tags">
           <span class="card-tag">Workflow Design</span>
           <span class="card-tag">Change Mgmt</span>
           <span class="card-tag">Stakeholder Alignment</span>
         </div>
       </div>
-      <div class="sample-card" onclick="scrollToSlide(4)">
-        <div class="card-number">02</div>
+      <div class="sample-card" onclick="scrollToSlide(9)">
+        <div class="card-number">04</div>
         <div class="card-type">Measurement + Strategy</div>
         <div class="card-title">Janney Grants Evaluation</div>
-        <div class="card-desc">Building a mixed-methods evaluation framework to measure 40 years of staff-driven innovation investments at JHU APL.</div>
+        <div class="card-desc">Built the data foundation and instruments for a mixed-methods evaluation of 40 years of staff-driven innovation investments at JHU APL.</div>
         <div class="card-tags">
           <span class="card-tag">Mixed Methods</span>
           <span class="card-tag">Bibliometrics</span>
           <span class="card-tag">Logic Model</span>
         </div>
       </div>
-      <div class="sample-card" onclick="scrollToSlide(6)">
-        <div class="card-number">03</div>
+      <div class="sample-card" onclick="scrollToSlide(11)">
+        <div class="card-number">05</div>
         <div class="card-type">Research + Design Thinking</div>
         <div class="card-title">Voyager Healthcare Research</div>
         <div class="card-desc">Obama-Chesky Voyager Scholar research across Japan and Nigeria on healthcare technology adoption, trust, and access equity.</div>
@@ -791,39 +814,234 @@ body {
           <span class="card-tag">Japan &amp; Nigeria</span>
           <span class="card-tag">Trust Design</span>
         </div>
+      </div>    </div>
+  </div>
+</section>
+ 
+<!-- SLIDE 2: PROCUREHUB - THE CHALLENGE -->
+<section class="slide" data-slide="2">
+  <div class="content">
+    <div class="section-label"><span class="badge badge-terra">Sample 01</span> ProcureHub: ServiceNow Source-to-Pay</div>
+    <div class="section-title">Consolidating How an Entire Lab Buys</div>
+    <p class="section-subtitle">I served as <strong style="color:#fff;">assistant lead on ProcureHub</strong>, APL&rsquo;s ServiceNow Source-to-Pay implementation, working alongside the system integrator. The project consolidated fragmented purchasing procedures and multiple standalone legacy systems into a single ServiceNow platform, covering the full path from a requisition request through approval, sourcing, and purchase.</p>
+    <div class="pain-grid">
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#129513;</div>
+        <div class="pain-title">Fragmented Procedures</div>
+        <div class="pain-desc">Purchasing ran on multiple standalone legacy systems with procedures that varied by category: no single platform, no single way to buy.</div>
       </div>
-      <div class="sample-card" onclick="scrollToSlide(8)">
-        <div class="card-number">04</div>
-        <div class="card-type">Enterprise Platform Delivery</div>
-        <div class="card-title">ProcureHub: Source-to-Pay</div>
-        <div class="card-desc">Assistant lead on APL&rsquo;s ServiceNow Source-to-Pay implementation with Deloitte, consolidating fragmented purchasing systems into a single platform.</div>
-        <div class="card-tags">
-          <span class="card-tag">ServiceNow</span>
-          <span class="card-tag">QA / UAT</span>
-          <span class="card-tag">Federal Acquisition</span>
-        </div>
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#128176;</div>
+        <div class="pain-title">Every Cost Type</div>
+        <div class="pain-desc">Requirements spanned every cost type the lab purchases (from furniture and EHS equipment to IT, software, and services), each with its own workflow logic.</div>
       </div>
-      <div class="sample-card" onclick="scrollToSlide(10)">
-        <div class="card-number">05</div>
-        <div class="card-type">AI + Automation</div>
-        <div class="card-title">Gen-AI Intake Routing</div>
-        <div class="card-desc">Built a generative-AI intake routing system on ServiceNow at APL that uses AI to understand incoming requests and route them to the right team.</div>
-        <div class="card-tags">
-          <span class="card-tag">ServiceNow</span>
-          <span class="card-tag">Generative AI</span>
-          <span class="card-tag">Intake Design</span>
-        </div>
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#128737;&#65039;</div>
+        <div class="pain-title">Security &amp; Federal Policy</div>
+        <div class="pain-desc">Sensitive and controlled purchases carry security restraints and government/federal acquisition policy constraints that the system had to enforce, not just document.</div>
+      </div>
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#128256;</div>
+        <div class="pain-title">Approval Complexity</div>
+        <div class="pain-desc">Routing depended on purchasing thresholds from $0 to over $10,000 and approval paths (ABP, micro-purchase, p-card, requisitioner), and a wrong route meant delays or compliance exposure.</div>
+      </div>
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#128101;</div>
+        <div class="pain-title">Adoption Risk</div>
+        <div class="pain-desc">Every requisitioner at the lab had to learn a new way to buy. If the intake experience was confusing, people would fall back to old habits, and the consolidation would fail.</div>
+      </div>
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#128279;</div>
+        <div class="pain-title">Upstream Data Dependencies</div>
+        <div class="pain-desc">The platform relied on charge codes, budget codes, and role data from upstream financial and identity systems. If those feeds were wrong, approvals routed to the wrong people.</div>
       </div>
     </div>
   </div>
 </section>
  
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 2: CASE IQ - THE BEFORE STATE                        -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section class="slide" data-slide="2">
+<!-- SLIDE 3: PROCUREHUB - MY OWNERSHIP & QA -->
+<section class="slide" data-slide="3">
   <div class="content">
-    <div class="section-label"><span class="badge badge-terra">Sample 01</span> Case IQ: The Before State</div>
+    <div class="section-label"><span class="badge badge-terra">Sample 01</span> My Ownership &amp; Quality Work</div>
+    <div class="section-title">From Requirements to a System People Trust</div>
+    <div class="detail-grid">
+      <div class="detail-block">
+        <div class="detail-block-title teal">&#128736; What I Owned</div>
+        <div class="detail-item"><strong>Requirements across all cost types</strong> the lab purchases, plus security restraints and federal acquisition policy constraints on sensitive and controlled purchases</div>
+        <div class="detail-item"><strong>Usability of the intake experience</strong>: the front door every requisitioner walks through</div>
+        <div class="detail-item"><strong>Staff training</strong> on the new Source-to-Pay workflows</div>
+        <div class="detail-item"><strong>User-support documentation</strong> so help didn&rsquo;t depend on who you knew</div>
+        <div class="detail-item"><strong>Stakeholder sessions with the system integrator</strong>: capturing gaps between what was configured and what teams actually needed</div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-title gold">&#128269; QA &amp; Testing I Drove</div>
+        <div class="detail-item">Tested <strong>record producers across 8 purchasing categories</strong>: General/Other, Furniture, EHS, IT, Software, Services, POD, Wireless</div>
+        <div class="detail-item">Validated <strong>routing, conditional questions, approvals, charge codes, required fields, email notifications, and workspace displays</strong></div>
+        <div class="detail-item">Validated <strong>clone/draft functionality and conditional form logic</strong> across intake forms</div>
+        <div class="detail-item">Documented <strong>defects with reproduction steps, expected vs. actual results, and supporting evidence</strong>, then retested fixes and reported results to developers and project leads</div>
+        <div class="detail-item">Supported <strong>SIT/UAT preparation</strong> and tested purchasing threshold scenarios</div>
+        <div class="detail-item">Reviewed <strong>routing matrix approval logic</strong>: ABP, micro-purchase, p-card, and requisitioner paths</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- SLIDE 4: PROCUREHUB - FINDINGS & RESULTS -->
+<section class="slide" data-slide="4">
+  <div class="content">
+    <div class="section-label"><span class="badge badge-terra">Sample 01</span> What I Found &amp; What It Produced</div>
+    <div class="section-title">Finding the Patterns Behind the Problems</div>
+    <p class="section-subtitle">The most useful thing I did on ProcureHub was look past individual tickets. Several of the biggest problems turned out to be one problem wearing different names.</p>
+    <div class="finding-cards">
+      <div class="finding-card">
+        <div class="finding-label">Finding 01</div>
+        <div class="finding-title">The Backlog Wasn&rsquo;t Mostly Defects</div>
+        <div class="finding-body">When the defect backlog stopped clearing before testing, I found most items were <strong>requirements nobody had written down</strong>, not build failures. Separating the two put the right people on the right fixes and got the schedule back on track.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-label">Finding 02</div>
+        <div class="finding-title">Clone &amp; Draft Failures Shared a Cause</div>
+        <div class="finding-body">Conditional questions, charge-code selections, category-specific fields, and delivery details were <strong>not always restored or copied correctly</strong> when saved requests were reopened. I organized the findings by record producer so the team could fix a pattern instead of chasing isolated tickets.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-label">Finding 03</div>
+        <div class="finding-title">Access Problems Came From Upstream</div>
+        <div class="finding-body">I compared <strong>responsibility data from the upstream financial system against ServiceNow group membership exports</strong> to find p-card holders and requisitioners who were missing or incorrectly assigned, documented discrepancies across sector and department groups, and brought them to the technical team.</div>
+      </div>
+    </div>
+    <div class="detail-grid" style="margin-top:24px;">
+      <div class="detail-block">
+        <div class="detail-block-title teal">&#128202; Data &amp; Reporting Work</div>
+        <div class="detail-item"><strong>Generated purchasing document:</strong> compared the legacy IT questionnaire with the new ProcureHub-generated document and specified which fields to display, where each came from in ServiceNow, and how Software and Services sections should appear conditionally, including purchase lines, comments, approver information, timestamps, and audit evidence</div>
+        <div class="detail-item"><strong>Enterprise reporting:</strong> led the early effort to make ProcureHub data available through Denodo, identifying the ServiceNow tables for sourcing headers, purchase lines, cost allocations, and request metrics, and documenting the joins and identifier translation reporting users would need</div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-title gold">&#127942; What It Produced</div>
+        <div class="detail-item"><strong>UAT readiness on schedule</strong> across all 8 purchasing categories</div>
+        <div class="detail-item"><strong>8 standard operating procedures</strong> for intake, escalation, and onboarding</div>
+        <div class="detail-item"><strong>15% faster ramp time</strong> for new team members</div>
+        <div class="detail-item"><strong>Reusable team assets:</strong> refined requirement templates, testing trackers, user guides, process visuals, and stakeholder communications that new team members and nontechnical stakeholders could pick up and use</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- SLIDE 5: GEN-AI INTAKE ROUTING - PROBLEM & DESIGN -->
+<section class="slide" data-slide="5">
+  <div class="content">
+    <div class="section-label"><span class="badge badge-teal">Sample 02</span> Gen-AI Intake Routing</div>
+    <div class="section-title">Bringing Generative AI to Request Intake</div>
+    <p class="section-subtitle">Building on the same intake-and-routing problems I worked on in Case IQ and ProcureHub, I built a <strong style="color:#fff;">generative-AI intake routing system on ServiceNow at APL</strong> that reads incoming requests, understands what they are asking for, and gets them to the right team without manual triage. It was the first AI workflow the division ran.</p>
+    <div class="pain-grid">
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#128229;</div>
+        <div class="pain-title">Manual Triage</div>
+        <div class="pain-desc">Every request coming into a 200-person division was read by a person, categorized, and passed to a team by hand.</div>
+      </div>
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#9203;</div>
+        <div class="pain-title">A Growing Backlog</div>
+        <div class="pain-desc">Triage was slow, so requests waited in a queue before anyone could start working on them.</div>
+      </div>
+      <div class="pain-grid-item">
+        <div class="pain-icon">&#128065;&#65039;</div>
+        <div class="pain-title">Invisible Work</div>
+        <div class="pain-desc">Because triage happened quietly between other tasks, nobody owned fixing it. The cost was real but never showed up anywhere.</div>
+      </div>
+    </div>
+    <div class="detail-block detail-full" style="margin-top:24px;">
+      <div class="detail-block-title teal">&#9881;&#65039; How It Works</div>
+      <div class="timeline" style="margin-top:8px;">
+        <div class="timeline-step">
+          <div class="timeline-num">Step 1</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-label">Request Arrives</div>
+          <div class="timeline-desc">Submitted through the normal intake form. Nothing changes for the requester</div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-num">Step 2</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-label">AI Classifies</div>
+          <div class="timeline-desc">The model reads the request and assigns a category and a confidence score</div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-num">Step 3</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-label">Confident: Route</div>
+          <div class="timeline-desc">Above the threshold, it goes straight to the right team</div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-num">Step 4</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-label">Uncertain: Human Review</div>
+          <div class="timeline-desc">Below the threshold, a person decides instead of the model guessing</div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-num">Step 5</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-label">Monitor &amp; Tune</div>
+          <div class="timeline-desc">Accuracy tracked after launch; threshold adjusted based on results</div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-block">
+        <div class="detail-block-title teal">&#129504; Why I Built It</div>
+        <div class="detail-item">Intake is where every system I&rsquo;ve worked on wins or loses, and manual triage is the slowest, most error-prone step. Generative AI can read a request the way a person would, then route it with the consistency of a system.</div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-title gold">&#128279; Why It Fits the Thread</div>
+        <div class="detail-item">This is the same people-process-data pattern: understand how requests actually arrive (people), design routing logic that holds up (process), and build in the structured capture that makes routing auditable (data), now with AI as the triage layer.</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- SLIDE 6: GEN-AI INTAKE ROUTING - TESTING, FAILURE & ADOPTION -->
+<section class="slide" data-slide="6">
+  <div class="content">
+    <div class="section-label"><span class="badge badge-teal">Sample 02</span> Testing, Failure &amp; Adoption</div>
+    <div class="section-title">Earning Trust in an AI System</div>
+    <p class="section-subtitle">Building the model was the easier half. The harder half was proving it worked, finding where it didn&rsquo;t, and getting a cautious team at a national laboratory to rely on it.</p>
+    <div class="detail-grid">
+      <div class="detail-block">
+        <div class="detail-block-title teal">&#129514; How I Tested It</div>
+        <div class="detail-item">Before it touched live work, I built an <strong>evaluation set from historical tickets</strong></div>
+        <div class="detail-item">Compared the model&rsquo;s routing against <strong>the decisions human agents had actually made</strong></div>
+        <div class="detail-item">That gave me a <strong>real accuracy baseline</strong> instead of an impression that it seemed to work</div>
+      </div>
+      <div class="detail-block" style="background:rgba(212,98,90,0.04);border-color:rgba(212,98,90,0.12);">
+        <div class="detail-block-title terracotta">&#9888;&#65039; What Failed</div>
+        <div class="detail-item">Errors weren&rsquo;t spread evenly. They clustered around <strong>short, vague requests</strong>: two-line tickets that could reasonably belong to two different teams</div>
+        <div class="detail-item">The model routed them <strong>confidently and wrong</strong></div>
+        <div class="detail-item">That&rsquo;s the dangerous kind of failure, because <strong>a wrong route looks like a right one</strong> until someone notices the delay</div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-title gold">&#128295; The Fix</div>
+        <div class="detail-item">Added a <strong>confidence threshold</strong>: below it, the request goes to a person for review instead of being routed</div>
+        <div class="detail-item">The system <strong>stops guessing on exactly the cases it handles worst</strong></div>
+        <div class="detail-item">The overall accuracy number alone would have said to ship it. Looking at where errors clustered showed <strong>where a person still needed to be involved</strong></div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-title teal">&#129309; Getting It Adopted</div>
+        <div class="detail-item">The team was cautious, and reasonably so: handing routing decisions to a model felt risky</div>
+        <div class="detail-item">I ran the system <strong>in parallel with the manual process</strong> so staff could compare its decisions to their own before it handled anything live</div>
+        <div class="detail-item">Trust came from <strong>watching it agree with them</strong>, not from me arguing for it</div>
+      </div>
+      <div class="detail-block detail-full" style="background:rgba(94,196,182,0.03);border-color:rgba(94,196,182,0.12);">
+        <div class="detail-block-title teal">&#127942; Results &amp; What I&rsquo;d Change</div>
+        <div class="detail-item"><strong>40 to 50% reduction in triage time</strong> across a 200-person division</div>
+        <div class="detail-item"><strong>The division&rsquo;s first AI workflow</strong>, with human review built in from the start</div>
+        <div class="detail-item"><strong>What I&rsquo;d change:</strong> log every human override from day one. Those overrides are the best signal for improving the prompt and tuning the threshold, and I didn&rsquo;t capture them consistently early on</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- SLIDE 7: CASE IQ - THE BEFORE STATE -->
+<section class="slide" data-slide="7">
+  <div class="content">
+    <div class="section-label"><span class="badge badge-terra">Sample 03</span> Case IQ: The Before State</div>
     <div class="section-title">The System That Was Already Breaking</div>
     <p class="section-subtitle">APL&rsquo;s Office of Legal Affairs supports multiple sensitive service areas: Ethics &amp; Compliance, EEO, and Audits &amp; Compliance. Before Case IQ, every one of these services ran on the same fragile, manual infrastructure.</p>
  
@@ -869,14 +1087,12 @@ body {
   </div>
 </section>
  
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 3: CASE IQ - MY ROLE & DESIGN THINKING               -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section class="slide" data-slide="3">
+<!-- SLIDE 8: CASE IQ - MY ROLE & DESIGN THINKING -->
+<section class="slide" data-slide="8">
   <div class="content">
-    <div class="section-label"><span class="badge badge-terra">Sample 01</span> Case IQ: My Role &amp; Design Thinking</div>
+    <div class="section-label"><span class="badge badge-terra">Sample 03</span> Case IQ: My Role &amp; Design Thinking</div>
     <div class="section-title">The Decisions I Made &amp; Why They Were Hard</div>
-    <p class="section-subtitle">I serve as the primary liaison between APL&rsquo;s Office of Legal Affairs and IT. My job is to <strong style="color:#fff;">translate competing stakeholder needs into a system that works</strong>, and deploy it across all three service areas simultaneously without disrupting active caseloads.</p>
+    <p class="section-subtitle">I served as the primary liaison between APL&rsquo;s Office of Legal Affairs and IT. My job was to <strong style="color:#fff;">translate competing stakeholder needs into a system that works</strong>, and deploy it across all three service areas simultaneously without disrupting active caseloads.</p>
  
     <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--pink);margin-top:8px;margin-bottom:16px;">Design Tradeoffs I Navigated</div>
  
@@ -920,28 +1136,32 @@ body {
     <div class="detail-grid" style="margin-top:28px;">
       <div class="detail-block">
         <div class="detail-block-title">&#128204; How I Managed the Transition</div>
-        <div class="detail-item"><strong>Stakeholder mapping:</strong> identified power users, skeptics, and champions within each service area before configuration; tailored training was adjusted accordingly</div>
+        <div class="detail-item"><strong>Stakeholder mapping:</strong> identified power users, skeptics, and champions within each service area before configuration, and tailored training accordingly</div>
         <div class="detail-item"><strong>3-week parallel operation:</strong> old process and Case IQ ran side-by-side so teams built confidence without risk of dropping active cases</div>
         <div class="detail-item"><strong>Weekly feedback cadence:</strong> 15-minute check-ins focused on &ldquo;what&rsquo;s confusing&rdquo; and &ldquo;what&rsquo;s slower than before&rdquo;, not feature requests</div>
         <div class="detail-item"><strong>Quick wins first:</strong> prioritized the most visible pain point (status-check emails) so users saw immediate value before confronting the learning curve</div>
       </div>
       <div class="detail-block">
-        <div class="detail-block-title">&#128202; What I&rsquo;m Measuring &amp; Why</div>
+        <div class="detail-block-title">&#128202; How I Defined Success</div>
         <div class="detail-item"><strong>Cycle time by stage:</strong> how long cases sit in each status, to find specific bottlenecks, not just averages</div>
         <div class="detail-item"><strong>Off-system case rate:</strong> how many cases are still tracked outside the system. This is the real adoption signal, not login counts</div>
         <div class="detail-item"><strong>&ldquo;Status check&rdquo; email volume:</strong> if requesters are still emailing to ask &ldquo;where&rsquo;s my case?&rdquo;, the visibility features need redesign</div>
         <div class="detail-item"><strong>Data completeness trajectory:</strong> not a point-in-time score, but a trendline: are required fields getting filled more consistently week over week?</div>
       </div>
+      <div class="detail-block detail-full">
+        <div class="detail-block-title teal">&#128269; Testing &amp; Documentation I Ran</div>
+        <div class="detail-item">Built <strong>reusable testing templates</strong> so the project team and business testers validated the system the same way every time</div>
+        <div class="detail-item">Tested the scenarios that break case systems in practice: <strong>standard cases, on-behalf-of submissions, reopened cases, duplicate cases, automated emails, and portal access</strong></div>
+        <div class="detail-item">Documented the <strong>business processes and organized requirements</strong> for each service area so configuration decisions traced back to how the teams actually worked</div>
+      </div>
     </div>
   </div>
 </section>
  
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 4: JANNEY - CONTEXT                                  -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section class="slide" data-slide="4">
+<!-- SLIDE 9: JANNEY - CONTEXT -->
+<section class="slide" data-slide="9">
   <div class="content">
-    <div class="section-label"><span class="badge badge-teal">Sample 02</span> Janney Grants Evaluation</div>
+    <div class="section-label"><span class="badge badge-teal">Sample 04</span> Janney Grants Evaluation</div>
     <div class="section-title">Measuring 40 Years of Staff-Driven Innovation</div>
     <div class="detail-grid">
       <div class="detail-block">
@@ -977,26 +1197,25 @@ body {
   </div>
 </section>
  
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 5: JANNEY - MY OWNERSHIP                             -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section class="slide" data-slide="5">
+<!-- SLIDE 10: JANNEY - MY OWNERSHIP -->
+<section class="slide" data-slide="10">
   <div class="content">
-    <div class="section-label"><span class="badge badge-teal">Sample 02</span> My Ownership &amp; Process Innovation</div>
+    <div class="section-label"><span class="badge badge-teal">Sample 04</span> My Ownership &amp; Process Innovation</div>
     <div class="section-title">From Raw Data to Actionable Framework</div>
     <div class="detail-grid">
       <div class="detail-block">
         <div class="detail-block-title teal">&#128736; What I Led</div>
-        <div class="detail-item">Compiled and cleaned a <strong>historical dataset</strong> of Janney activities (2022&ndash;2025)</div>
+        <div class="detail-item">Compiled and cleaned a <strong>historical dataset</strong> of Janney activities (2022 to 2025), combining data on applications, awards, funding, collaborators, scholars, program outputs, and Janney Talks</div>
+        <div class="detail-item">Helped define the <strong>reporting metrics</strong> leadership would use to judge the program</div>
         <div class="detail-item">Created <strong>focus/interview criteria and grouping system</strong> for representative coverage</div>
-        <div class="detail-item">Drafted and refined <strong>survey/interview instruments</strong> and data collection workflows</div>
+        <div class="detail-item">Drafted and refined <strong>survey/interview instruments</strong> and data collection workflows, with survey recommendations for applicants, award recipients, and longer-term participants</div>
         <div class="detail-item">Supported <strong>logic model framing</strong> (inputs &rarr; outputs &rarr; outcomes)</div>
-        <div class="detail-item">Introduced <strong>AI-assisted workflow</strong> to scale qualitative coding with review controls</div>
+        <div class="detail-item">Introduced an <strong>AI-assisted workflow</strong> to scale qualitative coding, with human review controls on the output</div>
         <div class="detail-item">Built the <strong>&ldquo;Idea to Award&rdquo; process overview</strong> to improve post-award data capture</div>
       </div>
       <div class="detail-block">
         <div class="detail-block-title teal">&#128260; Process Innovation: &ldquo;Idea to Award&rdquo;</div>
-        <p style="font-size:14px;color:var(--muted);line-height:1.7;">I created an end-to-end process overview to reduce confusion for applicants and standardize post-award expectations, improving downstream measurement quality.</p>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;">I created an end-to-end process overview to reduce confusion for applicants and standardize post-award expectations, improving downstream measurement quality. Measurement is only as good as the data captured along the way.</p>
         <div class="timeline" style="margin-top:20px;">
           <div class="timeline-step">
             <div class="timeline-num">Step 1</div>
@@ -1034,12 +1253,10 @@ body {
   </div>
 </section>
  
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 6: VOYAGER - DEEP CONTEXT                            -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section class="slide" data-slide="6">
+<!-- SLIDE 11: VOYAGER - DEEP CONTEXT -->
+<section class="slide" data-slide="11">
   <div class="content">
-    <div class="section-label"><span class="badge badge-gold">Sample 03</span> Voyager Healthcare Research</div>
+    <div class="section-label"><span class="badge badge-gold">Sample 05</span> Voyager Healthcare Research</div>
     <div class="section-title">Technology, Trust &amp; Access Across Two Countries</div>
  
     <div class="detail-block detail-full" style="margin-top:4px;background:rgba(232,195,100,0.03);border-color:rgba(232,195,100,0.12);">
@@ -1128,12 +1345,10 @@ body {
   </div>
 </section>
  
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 7: VOYAGER - TESTABLE OPPORTUNITIES (BRIEF)          -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section class="slide" data-slide="7">
+<!-- SLIDE 12: VOYAGER - TESTABLE OPPORTUNITIES -->
+<section class="slide" data-slide="12">
   <div class="content">
-    <div class="section-label"><span class="badge badge-gold">Sample 03</span> From Insights to Direction</div>
+    <div class="section-label"><span class="badge badge-gold">Sample 05</span> From Insights to Direction</div>
     <div class="section-title">Two Testable Product Opportunities</div>
     <p class="section-subtitle">The research pointed to two product-level opportunities grounded in what I observed, each translating a core finding into a design direction worth testing.</p>
     <div class="opp-grid">
@@ -1151,97 +1366,8 @@ body {
   </div>
 </section>
  
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 8: PROCUREHUB - THE CHALLENGE                        -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section class="slide" data-slide="8">
-  <div class="content">
-    <div class="section-label"><span class="badge badge-terra">Sample 04</span> ProcureHub: ServiceNow Source-to-Pay</div>
-    <div class="section-title">Consolidating How an Entire Lab Buys</div>
-    <p class="section-subtitle">I serve as <strong style="color:#fff;">assistant lead on ProcureHub</strong>, APL&rsquo;s ServiceNow Source-to-Pay implementation, with Deloitte as the system integrator. The project consolidates fragmented purchasing procedures and multiple standalone legacy systems into a single ServiceNow platform.</p>
-    <div class="pain-grid">
-      <div class="pain-grid-item">
-        <div class="pain-icon">&#129513;</div>
-        <div class="pain-title">Fragmented Procedures</div>
-        <div class="pain-desc">Purchasing ran on multiple standalone legacy systems with procedures that varied by category: no single platform, no single way to buy.</div>
-      </div>
-      <div class="pain-grid-item">
-        <div class="pain-icon">&#128176;</div>
-        <div class="pain-title">Every Cost Type</div>
-        <div class="pain-desc">Requirements span every cost type the lab purchases (from furniture and EHS equipment to IT, software, and services), each with its own workflow logic.</div>
-      </div>
-      <div class="pain-grid-item">
-        <div class="pain-icon">&#128737;&#65039;</div>
-        <div class="pain-title">Security &amp; Federal Policy</div>
-        <div class="pain-desc">Sensitive and controlled purchases carry security restraints and government/federal acquisition policy constraints that the system must enforce, not just document.</div>
-      </div>
-      <div class="pain-grid-item">
-        <div class="pain-icon">&#128256;</div>
-        <div class="pain-title">Approval Complexity</div>
-        <div class="pain-desc">Routing depends on purchasing thresholds and approval paths (ABP, micro-purchase, p-card, requisitioner), and a wrong route means delays or compliance exposure.</div>
-      </div>
-      <div class="pain-grid-item">
-        <div class="pain-icon">&#128101;</div>
-        <div class="pain-title">Adoption Risk</div>
-        <div class="pain-desc">Every requisitioner at the lab has to learn a new way to buy. If the intake experience is confusing, people fall back to old habits, and the consolidation fails.</div>
-      </div>
-    </div>
-  </div>
-</section>
- 
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 9: PROCUREHUB - MY OWNERSHIP & QA                    -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section class="slide" data-slide="9">
-  <div class="content">
-    <div class="section-label"><span class="badge badge-terra">Sample 04</span> My Ownership &amp; Quality Work</div>
-    <div class="section-title">From Requirements to a System People Trust</div>
-    <div class="detail-grid">
-      <div class="detail-block">
-        <div class="detail-block-title teal">&#128736; What I Own</div>
-        <div class="detail-item"><strong>Requirements across all cost types</strong> the lab purchases, plus security restraints and federal acquisition policy constraints on sensitive and controlled purchases</div>
-        <div class="detail-item"><strong>Usability of the intake experience</strong>: the front door every requisitioner walks through</div>
-        <div class="detail-item"><strong>Staff training</strong> on the new procurement workflows</div>
-        <div class="detail-item"><strong>User-support documentation</strong> so help doesn&rsquo;t depend on who you know</div>
-        <div class="detail-item"><strong>Stakeholder sessions with Deloitte</strong>: capturing gaps between what was configured and what teams actually need</div>
-      </div>
-      <div class="detail-block">
-        <div class="detail-block-title gold">&#128269; QA &amp; Testing I Drive</div>
-        <div class="detail-item">Tested <strong>record producers across procurement categories</strong>: General/Other, Furniture, EHS, IT, Software, Services, POD, Wireless</div>
-        <div class="detail-item">Validated <strong>clone/draft functionality and conditional form logic</strong> across intake forms</div>
-        <div class="detail-item">Documented <strong>defects with full reproduction details</strong> and built Excel defect trackers to manage resolution</div>
-        <div class="detail-item">Supported <strong>SIT/UAT preparation</strong> and tested purchasing threshold scenarios</div>
-        <div class="detail-item">Reviewed <strong>routing matrix approval logic</strong>: ABP, micro-purchase, p-card, and requisitioner paths</div>
-      </div>
-    </div>
-  </div>
-</section>
- 
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 10: GEN-AI INTAKE ROUTING                            -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section class="slide" data-slide="10">
-  <div class="content">
-    <div class="section-label"><span class="badge badge-teal">Sample 05</span> Gen-AI Intake Routing</div>
-    <div class="section-title">Bringing Generative AI to Request Intake</div>
-    <p class="section-subtitle">Building on the same intake-and-routing problems I solved in Case IQ and ProcureHub, I built a <strong style="color:#fff;">generative-AI intake routing system on ServiceNow at APL</strong> that uses AI to understand incoming requests and get them to the right team without manual triage.</p>
-    <div class="detail-grid">
-      <div class="detail-block">
-        <div class="detail-block-title teal">&#129504; Why I Built It</div>
-        <div class="detail-item">Intake is where every system I&rsquo;ve worked on wins or loses, and manual triage is the slowest, most error-prone step. Generative AI can read a request the way a person would, then route it with the consistency of a system.</div>
-      </div>
-      <div class="detail-block">
-        <div class="detail-block-title gold">&#128279; Why It Fits the Thread</div>
-        <div class="detail-item">This is the same people-process-data pattern: understand how requests actually arrive (people), design routing logic that holds up (process), and build in the structured capture that makes routing auditable (data), now with AI as the triage layer.</div>
-      </div>
-    </div>
-  </div>
-</section>
- 
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 11: CLOSING - NO VIDEO GUIDE                         -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section class="slide closing-slide" data-slide="11"><!-- note: removing this line's "closing-slide" would revert to normal bg -->
+<!-- SLIDE 13: CLOSING -->
+<section class="slide closing-slide" data-slide="13">
   <div class="content" style="max-width:800px;">
     <div class="section-label" style="color:var(--pink);">What Connects It All</div>
     <div class="section-title" style="margin-bottom:24px;">People, Process, Data</div>
@@ -1256,18 +1382,23 @@ body {
       <div class="pillar">
         <div class="pillar-icon">&#9881;&#65039;</div>
         <div class="pillar-title">Process</div>
-        <div class="pillar-desc">Workflow design, taxonomy, implementation playbooks, feedback loops</div>
+        <div class="pillar-desc">Workflow design, Source-to-Pay delivery, implementation playbooks, feedback loops</div>
       </div>
       <div class="pillar">
         <div class="pillar-icon">&#128202;</div>
         <div class="pillar-title">Data</div>
-        <div class="pillar-desc">Mixed methods, evaluation frameworks, evidence-based iteration</div>
+        <div class="pillar-desc">Mixed methods, evaluation frameworks, AI testing, evidence-based iteration</div>
       </div>
     </div>
  
     <div style="margin-top:60px;padding-top:32px;border-top:1px solid var(--border);text-align:center;">
       <div style="font-family:'DM Serif Display',serif;font-size:24px;color:var(--pink-soft);font-style:italic;max-width:500px;margin:0 auto;">Thank you for reviewing my portfolio.</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:16px;letter-spacing:1px;">TOLULOPE OLUYADI &middot; TECHNICAL PROJECT MANAGER &amp; BUSINESS ANALYST &middot; JHU APPLIED PHYSICS LABORATORY
+      <div style="font-size:15px;margin-top:20px;">
+        <a href="mailto:oluyadit@gmail.com" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--pink);padding-bottom:2px;">oluyadit@gmail.com</a>
+        <span style="color:var(--muted);margin:0 10px;">&middot;</span>
+        <a href="https://www.linkedin.com/in/tolulope-oluyadi" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--pink);padding-bottom:2px;">LinkedIn</a>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:16px;letter-spacing:1px;">TOLULOPE OLUYADI &middot; TECHNICAL PROJECT MANAGER &amp; BUSINESS ANALYST &middot; JHU APPLIED PHYSICS LABORATORY</div>
     </div>
   </div>
 </section>
@@ -1332,4 +1463,3 @@ document.addEventListener('keydown', (e) => {
 </script>
 </body>
 </html>
- 
