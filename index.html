@@ -2071,6 +2071,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
   contactDlg.addEventListener('click', e => {
     if (e.target === contactDlg || e.target.closest('[data-close]')) closeContact();
   });
+  const gmailHref = d => `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}&su=${encodeURIComponent(d._subject)}&body=${encodeURIComponent(`${d.message}\n\n${d.name}\n${d.email}`)}`;
   const mailtoHref = d => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(d._subject)}&body=${encodeURIComponent(`${d.message}\n\n${d.name}\n${d.email}`)}`;
   ['name', 'email', 'message'].forEach(n => fields.namedItem(n).addEventListener('input', e => { e.target.classList.remove('invalid'); formError.hidden = true; }));
   form.addEventListener('submit', async e => {
@@ -2112,7 +2113,12 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
       doneView.hidden = false;
       $('button', doneView).focus();
     } catch (err) {
-      formError.innerHTML = `Sorry, that didn’t go through. You can <a href="${mailtoHref(d)}">send it by email instead</a>; your message will be filled in for you.`;
+      const reason = String((err && err.message) || '');
+      if (window.console) console.warn('Contact form:', reason);
+      const backups = `<a href="${gmailHref(d)}" target="_blank" rel="noopener">send it with Gmail</a> or <a href="${mailtoHref(d)}">your email app</a>; your message will be filled in for you`;
+      formError.innerHTML = /activat/i.test(reason)
+        ? `This form is waiting on a one-time activation, so it can’t send just yet. For now, you can ${backups}.`
+        : `Sorry, that didn’t go through. You can ${backups}.`;
       formError.hidden = false;
     } finally {
       sendBtn.disabled = false;
