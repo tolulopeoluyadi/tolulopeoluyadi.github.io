@@ -404,7 +404,9 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
 .contact-or a { color: var(--pink-deep); font-weight: 600; }
 .contact-done { padding: 40px 28px 34px; text-align: center; }
 .done-title { font-family: var(--script); font-size: 44px; color: var(--pink); line-height: 1.1; }
-.done-text { font-size: 15.5px; color: var(--muted); margin: 6px 0 22px; }
+.done-text { font-size: 15.5px; line-height: 1.55; color: var(--muted); margin: 6px auto 22px; max-width: 420px; }
+.back-link { margin-top: 18px; border: none; background: none; font: 600 14px var(--body); color: var(--pink-deep); cursor: pointer; }
+.back-link:hover { text-decoration: underline; }
 @media (max-width: 640px) { .field-row { grid-template-columns: 1fr; gap: 0; } .contact-form { padding: 22px 20px 24px; } .contact h2 { font-size: 26px; } }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1631,7 +1633,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
 </dialog>
 
 <dialog class="contact" id="contact" aria-labelledby="contactTitle">
-  <form class="contact-form" id="contactForm" action="https://formsubmit.co/oluyadit@gmail.com" method="POST" novalidate>
+  <form class="contact-form" id="contactForm" novalidate>
     <div class="contact-head">
       <div class="contact-doll" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#doll-head" width="100" height="100"/></svg></div>
       <div>
@@ -1654,18 +1656,24 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
       </select>
     </label>
     <label class="field"><span>Message</span><textarea name="message" rows="5" required placeholder="Tell me a little about what you have in mind"></textarea></label>
-    <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <input type="hidden" name="_subject" value="Portfolio message">
-    <input type="hidden" name="_replyto" value="">
-    <input type="hidden" name="_next" value="">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="false">
+    <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
     <p class="form-error" id="formError" role="alert" hidden></p>
     <div class="contact-row">
       <button class="btn btn-pink" type="submit" id="sendBtn">Send message</button>
       <span class="contact-or">or email <a href="mailto:oluyadit@gmail.com">oluyadit@gmail.com</a></span>
     </div>
   </form>
+  <div class="contact-done" id="contactReady" hidden>
+    <div class="contact-doll big" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#doll-head" width="100" height="100"/></svg></div>
+    <div class="done-title">Almost there!</div>
+    <p class="done-text" id="readyLead">Pick how you&rsquo;d like to send it. Your note is already filled in.</p>
+    <div class="contact-actions">
+      <a class="btn btn-pink" id="readyGmail" href="#" target="_blank" rel="noopener">Send with Gmail</a>
+      <a class="btn" id="readyMail" href="#">Use my email app</a>
+      <button class="btn" type="button" id="readyCopy">Copy message</button>
+    </div>
+    <button class="back-link" type="button" data-edit>&larr; Edit my message</button>
+  </div>
   <div class="contact-done" id="contactDone" hidden>
     <div class="contact-doll big" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#doll-head" width="100" height="100"/></svg></div>
     <div class="done-title">Message sent!</div>
@@ -2057,15 +2065,23 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
 
   /* ── Contact form ── */
   const CONTACT_EMAIL = 'oluyadit@gmail.com';
+  // Free Web3Forms access key (web3forms.com). When empty, visitors send through their own email.
+  const WEB3FORMS_KEY = '';
   const contactDlg = $('#contact');
   const form = $('#contactForm');
   const fields = form.elements;
   const doneView = $('#contactDone');
+  const readyView = $('#contactReady');
   const formError = $('#formError');
   const sendBtn = $('#sendBtn');
+  let draft = null;
+  function showView(v) {
+    form.hidden = v !== 'form';
+    readyView.hidden = v !== 'ready';
+    doneView.hidden = v !== 'done';
+  }
   function openContact() {
-    form.hidden = false;
-    doneView.hidden = true;
+    showView('form');
     formError.hidden = true;
     if (typeof contactDlg.showModal === 'function') { if (!contactDlg.open) contactDlg.showModal(); } else contactDlg.setAttribute('open', '');
     setTimeout(() => fields.namedItem('name').focus(), 30);
@@ -2075,9 +2091,28 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
   }
   contactDlg.addEventListener('click', e => {
     if (e.target === contactDlg || e.target.closest('[data-close]')) closeContact();
+    if (e.target.closest('[data-edit]')) { showView('form'); fields.namedItem('message').focus(); }
   });
-  const gmailHref = d => `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}&su=${encodeURIComponent(d._subject)}&body=${encodeURIComponent(`${d.message}\n\n${d.name}\n${d.email}`)}`;
-  const mailtoHref = d => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(d._subject)}&body=${encodeURIComponent(`${d.message}\n\n${d.name}\n${d.email}`)}`;
+  const bodyText = d => `${d.message}\n\n${d.name}\n${d.email}`;
+  const gmailHref = d => `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}&su=${encodeURIComponent(d.subject)}&body=${encodeURIComponent(bodyText(d))}`;
+  const mailtoHref = d => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(d.subject)}&body=${encodeURIComponent(bodyText(d))}`;
+  function showReady(d, failed) {
+    draft = d;
+    $('#readyLead').textContent = failed
+      ? 'My message service didn’t answer, so let’s send it from your email instead. Your note is already filled in.'
+      : 'Pick how you’d like to send it. Your note is already filled in.';
+    $('#readyGmail').href = gmailHref(d);
+    $('#readyMail').href = mailtoHref(d);
+    showView('ready');
+    $('#readyGmail').focus();
+  }
+  $('#readyCopy').addEventListener('click', () => {
+    if (!draft) return;
+    const text = `To: ${CONTACT_EMAIL}\nSubject: ${draft.subject}\n\n${bodyText(draft)}`;
+    const ok = () => toast(`Copied! Paste it into an email to ${CONTACT_EMAIL}`);
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, () => toast(`Email ${CONTACT_EMAIL}`));
+    else toast(`Email ${CONTACT_EMAIL}`);
+  });
   ['name', 'email', 'message'].forEach(n => fields.namedItem(n).addEventListener('input', e => { e.target.classList.remove('invalid'); formError.hidden = true; }));
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -2092,65 +2127,50 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
       bad[0].focus();
       return;
     }
-    if (fields.namedItem('_honey').value) { form.hidden = true; doneView.hidden = false; return; }
+    if (fields.namedItem('botcheck').checked) { showView('done'); return; }
     const d = {
       name: fields.namedItem('name').value.trim(),
       email: fields.namedItem('email').value.trim(),
       topic: fields.namedItem('topic').value,
       message: fields.namedItem('message').value.trim(),
     };
-    d._subject = `Portfolio message from ${d.name}: ${d.topic}`;
-    d._replyto = d.email;
-    d._template = 'table';
-    d._captcha = 'false';
+    d.subject = `Portfolio message from ${d.name}: ${d.topic}`;
+    if (!WEB3FORMS_KEY || WEB3FORMS_KEY.indexOf('{{') === 0) { showReady(d, false); return; }
     sendBtn.disabled = true;
     sendBtn.textContent = 'Sending…';
     try {
       const ctrl = 'AbortController' in window ? new AbortController() : null;
-      const timer = ctrl && setTimeout(() => ctrl.abort(), 10000);
-      const res = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+      const timer = ctrl && setTimeout(() => ctrl.abort(), 12000);
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        signal: ctrl ? ctrl.signal : undefined,
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(d),
+        signal: ctrl ? ctrl.signal : undefined,
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: d.subject,
+          from_name: 'Tolulope Oluyadi portfolio',
+          replyto: d.email,
+          name: d.name,
+          email: d.email,
+          topic: d.topic,
+          message: d.message,
+          botcheck: '',
+        }),
       });
       if (timer) clearTimeout(timer);
       const out = await res.json().catch(() => ({}));
-      if (!res.ok || String(out.success) === 'false') throw new Error(out.message || 'Send failed');
+      if (!res.ok || out.success !== true) throw new Error(out.message || `HTTP ${res.status}`);
       form.reset();
-      form.hidden = true;
-      doneView.hidden = false;
+      showView('done');
       $('button', doneView).focus();
     } catch (err) {
-      const reason = String((err && err.message) || '');
-      if (window.console) console.warn('Contact form:', reason);
-      if (!/activat/i.test(reason)) {
-        // Background send failed (blocked or unreachable): submit the form the classic way instead.
-        fields.namedItem('_subject').value = d._subject;
-        fields.namedItem('_replyto').value = d.email;
-        fields.namedItem('_next').value = location.href.split('#')[0].split('?')[0] + '?sent=1';
-        sendBtn.textContent = 'Sending…';
-        HTMLFormElement.prototype.submit.call(form);
-        return;
-      }
-      const backups = `<a href="${gmailHref(d)}" target="_blank" rel="noopener">send it with Gmail</a> or <a href="${mailtoHref(d)}">your email app</a>; your message will be filled in for you`;
-      formError.innerHTML = `This form is waiting on a one-time activation, so it can’t send just yet. For now, you can ${backups}.`;
-      formError.hidden = false;
+      if (window.console) console.warn('Contact form:', err && err.message);
+      showReady(d, true);
     } finally {
       sendBtn.disabled = false;
       sendBtn.textContent = 'Send message';
     }
   });
-
-  try {
-    const params = new URLSearchParams(location.search);
-    if (params.has('sent')) {
-      history.replaceState(null, '', location.pathname + location.hash);
-      openContact();
-      form.hidden = true;
-      doneView.hidden = false;
-    }
-  } catch (e) { /* ignore */ }
 
   /* ── Keyboard ── */
   document.addEventListener('keydown', e => {
