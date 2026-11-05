@@ -1827,8 +1827,8 @@ a { color: inherit; }
   }
   function goHome() {
     if (parseRoute().view === 'house') { window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }); return; }
-    history.pushState(null, '', location.pathname + location.search);
-    render();
+    try { history.pushState(null, '', location.pathname + location.search); render(); }
+    catch (e) { location.hash = ''; }
   }
   window.addEventListener('hashchange', render);
   window.addEventListener('popstate', render);
@@ -1901,7 +1901,7 @@ a { color: inherit; }
     { id: 'act-theme', name: 'Toggle night mode', sub: 'Dim or brighten the lights', glyph: '☾', keys: 'dark night light day theme lights mode', run: () => themeBtn.click() },
     { id: 'act-email', name: 'Email Tolulope', sub: 'oluyadit@gmail.com', glyph: '✉', keys: 'email contact mail message', run: () => { location.href = 'mailto:oluyadit@gmail.com'; } },
     { id: 'act-copy', name: 'Copy email address', sub: 'oluyadit@gmail.com', glyph: '⧉', keys: 'copy email clipboard', run: () => copyEmail('oluyadit@gmail.com') },
-    { id: 'act-linkedin', name: 'Open LinkedIn', sub: 'linkedin.com/in/tolulope-oluyadi', glyph: 'in', keys: 'linkedin social profile network', run: () => window.open('https://www.linkedin.com/in/tolulope-oluyadi', '_blank', 'noopener') },
+    { id: 'act-linkedin', name: 'Open LinkedIn', sub: 'linkedin.com/in/tolulope-oluyadi', glyph: 'in', keys: 'linkedin social profile network', run: () => { const l = document.createElement('a'); l.href = 'https://www.linkedin.com/in/tolulope-oluyadi'; l.target = '_blank'; l.rel = 'noopener'; document.body.appendChild(l); l.click(); l.remove(); } },
   ];
   let palItems = [];
   let palIndex = 0;
