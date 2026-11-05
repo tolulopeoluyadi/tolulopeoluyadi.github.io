@@ -1631,7 +1631,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
 </dialog>
 
 <dialog class="contact" id="contact" aria-labelledby="contactTitle">
-  <form class="contact-form" id="contactForm" novalidate>
+  <form class="contact-form" id="contactForm" action="https://formsubmit.co/oluyadit@gmail.com" method="POST" novalidate>
     <div class="contact-head">
       <div class="contact-doll" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#doll-head" width="100" height="100"/></svg></div>
       <div>
@@ -1655,6 +1655,11 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
     </label>
     <label class="field"><span>Message</span><textarea name="message" rows="5" required placeholder="Tell me a little about what you have in mind"></textarea></label>
     <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input type="hidden" name="_subject" value="Portfolio message">
+    <input type="hidden" name="_replyto" value="">
+    <input type="hidden" name="_next" value="">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
     <p class="form-error" id="formError" role="alert" hidden></p>
     <div class="contact-row">
       <button class="btn btn-pink" type="submit" id="sendBtn">Send message</button>
@@ -2101,11 +2106,15 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
     sendBtn.disabled = true;
     sendBtn.textContent = 'Sending…';
     try {
+      const ctrl = 'AbortController' in window ? new AbortController() : null;
+      const timer = ctrl && setTimeout(() => ctrl.abort(), 10000);
       const res = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
         method: 'POST',
+        signal: ctrl ? ctrl.signal : undefined,
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(d),
       });
+      if (timer) clearTimeout(timer);
       const out = await res.json().catch(() => ({}));
       if (!res.ok || String(out.success) === 'false') throw new Error(out.message || 'Send failed');
       form.reset();
@@ -2115,16 +2124,33 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
     } catch (err) {
       const reason = String((err && err.message) || '');
       if (window.console) console.warn('Contact form:', reason);
+      if (!/activat/i.test(reason)) {
+        // Background send failed (blocked or unreachable): submit the form the classic way instead.
+        fields.namedItem('_subject').value = d._subject;
+        fields.namedItem('_replyto').value = d.email;
+        fields.namedItem('_next').value = location.href.split('#')[0].split('?')[0] + '?sent=1';
+        sendBtn.textContent = 'Sending…';
+        HTMLFormElement.prototype.submit.call(form);
+        return;
+      }
       const backups = `<a href="${gmailHref(d)}" target="_blank" rel="noopener">send it with Gmail</a> or <a href="${mailtoHref(d)}">your email app</a>; your message will be filled in for you`;
-      formError.innerHTML = /activat/i.test(reason)
-        ? `This form is waiting on a one-time activation, so it can’t send just yet. For now, you can ${backups}.`
-        : `Sorry, that didn’t go through. You can ${backups}.`;
+      formError.innerHTML = `This form is waiting on a one-time activation, so it can’t send just yet. For now, you can ${backups}.`;
       formError.hidden = false;
     } finally {
       sendBtn.disabled = false;
       sendBtn.textContent = 'Send message';
     }
   });
+
+  try {
+    const params = new URLSearchParams(location.search);
+    if (params.has('sent')) {
+      history.replaceState(null, '', location.pathname + location.hash);
+      openContact();
+      form.hidden = true;
+      doneView.hidden = false;
+    }
+  } catch (e) { /* ignore */ }
 
   /* ── Keyboard ── */
   document.addEventListener('keydown', e => {
