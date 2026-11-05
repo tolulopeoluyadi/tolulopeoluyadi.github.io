@@ -373,6 +373,40 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
 .toast { position: fixed; left: 50%; bottom: 96px; z-index: 90; transform: translate(-50%, 16px); opacity: 0; pointer-events: none; padding: 11px 18px; border-radius: 999px; background: var(--card); color: var(--ink); border: 2.5px solid var(--line); box-shadow: 4px 4px 0 var(--pink-soft); font-size: 14px; font-weight: 600; transition: opacity .25s, transform .25s; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
+
+/* ─── Contact form ─── */
+.contact-sub { font-size: 15.5px; color: var(--muted); margin-top: 8px; }
+.contact-email a { color: var(--pink-deep); }
+.contact { margin: 7vh auto auto; width: min(580px, 94vw); max-height: 88vh; overflow-y: auto; padding: 0; border: 2.5px solid var(--line); border-radius: 24px; background: var(--card); color: var(--ink); box-shadow: 10px 10px 0 var(--pink-soft); }
+.contact::backdrop { background: rgba(58,16,34,.45); }
+.contact-form { padding: 26px 28px 28px; }
+.contact-head { position: relative; display: flex; gap: 16px; align-items: flex-start; padding-right: 40px; margin-bottom: 20px; }
+.contact-doll { width: 68px; height: 68px; flex-shrink: 0; overflow: hidden; border-radius: 50%; border: 2.5px solid var(--line); background-color: #FFF4F9; background-image: linear-gradient(90deg, rgba(255,95,168,.16) 50%, transparent 50%), linear-gradient(rgba(255,95,168,.16) 50%, transparent 50%); background-size: 14px 14px; }
+.contact-doll svg { width: 100%; height: 100%; display: block; }
+.contact-doll.big { width: 120px; height: 120px; margin: 0 auto 14px; }
+.contact-kicker { font-family: var(--script); font-size: 23px; color: var(--pink); }
+.contact h2 { font-family: var(--display); font-style: italic; font-weight: 900; font-size: 31px; line-height: 1.05; }
+.contact-head p { font-size: 14.5px; line-height: 1.5; color: var(--muted); margin-top: 6px; }
+.contact-close { position: absolute; right: 0; top: 0; width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--line-soft); background: var(--card); color: var(--ink); font-size: 22px; line-height: 1; cursor: pointer; }
+.contact-close:hover { border-color: var(--pink); color: var(--pink); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; font-size: 14px; font-weight: 600; }
+.field input, .field select, .field textarea { width: 100%; font: 500 15px var(--body); color: var(--ink); background: var(--bg); border: 2px solid var(--line-soft); border-radius: 12px; padding: 11px 13px; outline: none; transition: border-color .2s, box-shadow .2s; }
+.field textarea { resize: vertical; min-height: 120px; line-height: 1.5; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(224,33,138,.15); }
+.field .invalid { border-color: var(--coral); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form-error { font-size: 14px; line-height: 1.5; color: var(--coral); background: rgba(230,69,94,.08); border: 1.5px solid rgba(230,69,94,.35); border-radius: 12px; padding: 10px 12px; margin-bottom: 14px; }
+.form-error a { color: inherit; font-weight: 700; }
+.contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.contact-row .btn[disabled] { opacity: .7; cursor: progress; }
+.contact-or { font-size: 13.5px; color: var(--muted); }
+.contact-or a { color: var(--pink-deep); font-weight: 600; }
+.contact-done { padding: 40px 28px 34px; text-align: center; }
+.done-title { font-family: var(--script); font-size: 44px; color: var(--pink); line-height: 1.1; }
+.done-text { font-size: 15.5px; color: var(--muted); margin: 6px 0 22px; }
+@media (max-width: 640px) { .field-row { grid-template-columns: 1fr; gap: 0; } .contact-form { padding: 22px 20px 24px; } .contact h2 { font-size: 26px; } }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
@@ -422,59 +456,47 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
     <!-- ═══ The doll (original character) ═══ -->
     <symbol id="doll" viewBox="0 0 220 420">
       <g fill="none" stroke="#3A1022" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
-        <g style="fill:var(--hair,#22110B)" stroke-width="5">
-          <circle cx="110" cy="92" r="60"/><circle cx="62" cy="84" r="26"/><circle cx="158" cy="84" r="26"/>
-          <circle cx="76" cy="50" r="26"/><circle cx="144" cy="50" r="26"/><circle cx="110" cy="38" r="28"/>
-          <circle cx="60" cy="116" r="22"/><circle cx="160" cy="116" r="22"/>
-        </g>
-        <g style="fill:var(--hair,#22110B)" stroke="none">
-          <circle cx="110" cy="92" r="60"/><circle cx="62" cy="84" r="26"/><circle cx="158" cy="84" r="26"/>
-          <circle cx="76" cy="50" r="26"/><circle cx="144" cy="50" r="26"/><circle cx="110" cy="38" r="28"/>
-          <circle cx="60" cy="116" r="22"/><circle cx="160" cy="116" r="22"/>
-        </g>
-        <g fill="none" stroke="#4E2C1E" stroke-width="1.6">
-          <path d="M70 60c3-4 8-4 10 0"/><path d="M128 44c3-4 8-4 10 0"/><path d="M98 30c3-4 8-4 10 0"/>
-          <path d="M150 92c3-4 8-4 10 0"/><path d="M52 104c3-4 8-4 10 0"/><path d="M160 122c2-3 6-3 8 0"/>
-          <path d="M84 36c2-3 6-3 8 0"/><path d="M46 78c2-3 6-3 8 0"/>
-        </g>
+        <path d="M110 46C78 46 66 70 66 102l-4 98c0 10 8 14 18 12h60c10 2 18-2 18-12l-4-98c0-32-12-56-44-56z" style="fill:var(--hair,#1F0F0A)"/>
         <path d="M100 126v24h20v-24" style="fill:var(--skin,#8B5A3C)"/>
-        <circle cx="80" cy="104" r="7" style="fill:var(--skin,#8B5A3C)"/>
-        <circle cx="140" cy="104" r="7" style="fill:var(--skin,#8B5A3C)"/>
         <ellipse cx="110" cy="100" rx="31" ry="35" style="fill:var(--skin,#8B5A3C)"/>
-        <path d="M79 92C80 66 96 58 110 58s30 8 31 34c-8-14-19-20-31-20S87 78 79 92z" style="fill:var(--hair,#22110B)"/>
-        <circle cx="78" cy="119" r="9" fill="none" stroke="#E8B23A" stroke-width="3.2"/>
-        <circle cx="142" cy="119" r="9" fill="none" stroke="#E8B23A" stroke-width="3.2"/>
-        <path d="M92 90q7-4 13-1M115 89q6-3 13 1" fill="none" stroke="#22110B" stroke-width="2.6"/>
+        <path d="M93 89q6-3.5 12-1M115 88q6-2.5 12 1" stroke="#1F0F0A" stroke-width="2.6"/>
         <ellipse cx="98" cy="100" rx="4.2" ry="5" fill="#2A120A" stroke="none"/>
         <ellipse cx="122" cy="100" rx="4.2" ry="5" fill="#2A120A" stroke="none"/>
         <circle cx="99.6" cy="98.2" r="1.5" fill="#fff" stroke="none"/><circle cx="123.6" cy="98.2" r="1.5" fill="#fff" stroke="none"/>
         <path d="M93.5 96.5l-3-2.2M126.5 96.5l3-2.2" stroke="#2A120A" stroke-width="1.6"/>
-        <path d="M108 104q3 6-1 8q3 1.5 6 0" fill="none" stroke="#5E3622" stroke-width="1.6"/>
-        <ellipse cx="90" cy="111" rx="6" ry="3.5" fill="#FF6FA8" opacity=".38" stroke="none"/>
-        <ellipse cx="130" cy="111" rx="6" ry="3.5" fill="#FF6FA8" opacity=".38" stroke="none"/>
+        <path d="M108 104q3 6-1 8q3 1.5 6 0" stroke="#5E3622" stroke-width="1.6"/>
+        <ellipse cx="91" cy="111" rx="6" ry="3.5" fill="#FF6FA8" opacity=".38" stroke="none"/>
+        <ellipse cx="129" cy="111" rx="6" ry="3.5" fill="#FF6FA8" opacity=".38" stroke="none"/>
         <path d="M101 118q9 7 18 0q-9 2.5-18 0z" fill="#C2185B" stroke="#8E1046" stroke-width="1.4"/>
-        <path d="M70 244h80l8 148h-38l-10-112-10 112H62z" fill="#FF5FA8"/>
+        <path d="M70 244h80l8 148h-38l-10-112-10 112H62z" fill="#E0218A"/>
+        <path d="M88 262l-7 126M132 262l7 126" stroke="#B0106A" stroke-width="1.5"/>
         <path d="M64 392h34l3 9H61zM122 392h34l4 9h-41z" fill="#B0106A"/>
         <path d="M74 166c2-12 16-18 36-18s34 6 36 18l6 80H68z" fill="#E0218A"/>
         <path d="M99 150l11 36 11-36z" fill="#FFF6EC"/>
         <path d="M99 150l11 36-9 20-15-44zM121 150l-11 36 9 20 15-44z" fill="#B0106A"/>
-        <path d="M103 152l7 28 7-28" fill="none" stroke="#E8B23A" stroke-width="1.6"/>
-        <rect x="104" y="179" width="12" height="15" rx="2" fill="#FFF6EC" stroke="#E8B23A" stroke-width="1.6"/>
-        <path d="M107 186h6" stroke="#E0218A" stroke-width="1.6"/>
+        <g fill="#FFFFFF" stroke="#3A1022" stroke-width="1"><circle cx="101.5" cy="153" r="2.1"/><circle cx="104" cy="158" r="2.1"/><circle cx="107" cy="161.5" r="2.1"/><circle cx="110" cy="163" r="2.1"/><circle cx="113" cy="161.5" r="2.1"/><circle cx="116" cy="158" r="2.1"/><circle cx="118.5" cy="153" r="2.1"/></g>
+        <path d="M128 188l12-2" stroke="#B0106A" stroke-width="1.6"/>
+        <path d="M130 186l3-6 4 5z" fill="#FFF6EC" stroke-width="1.2"/>
         <rect x="70" y="240" width="80" height="8" fill="#B0106A"/>
         <rect x="104" y="238.5" width="12" height="11" rx="2" fill="#E8B23A"/>
         <circle cx="110" cy="216" r="2.6" fill="#E8B23A"/><circle cx="110" cy="229" r="2.6" fill="#E8B23A"/>
-        <path d="M80 166l-22 44 22 28" fill="none" stroke="#3A1022" stroke-width="24"/>
-        <path d="M80 166l-22 44 22 28" fill="none" stroke="#E0218A" stroke-width="19"/>
+        <path d="M80 166l-22 44 22 28" stroke="#3A1022" stroke-width="24"/>
+        <path d="M80 166l-22 44 22 28" stroke="#E0218A" stroke-width="19"/>
         <circle cx="82" cy="238" r="8" style="fill:var(--skin,#8B5A3C)"/>
         <rect x="138" y="204" width="50" height="33" rx="4" fill="#FFF6EC"/>
         <path d="M163 228c-5-3.6-6.6-6.8-3.9-8.3 1.6-.9 3.2.1 3.9 1.2.7-1.1 2.3-2.1 3.9-1.2 2.7 1.5 1.1 4.7-3.9 8.3z" fill="#E0218A" stroke="none"/>
-        <path d="M140 166l22 40-12 18" fill="none" stroke="#3A1022" stroke-width="24"/>
-        <path d="M140 166l22 40-12 18" fill="none" stroke="#E0218A" stroke-width="19"/>
+        <path d="M140 166l22 40-12 18" stroke="#3A1022" stroke-width="24"/>
+        <path d="M140 166l22 40-12 18" stroke="#E0218A" stroke-width="19"/>
         <circle cx="150" cy="226" r="8" style="fill:var(--skin,#8B5A3C)"/>
+        <path d="M110 52C88 52 76 64 75 86c-1 18 0 36-2 54-1 16-4 30-7 42l15 3c3-15 3-33 3-49 0-20-2-38 0-50 2-12 12-22 26-24z" style="fill:var(--hair,#1F0F0A)"/>
+        <path d="M110 52c22 0 34 12 35 34 1 18 0 36 2 54 1 16 4 30 7 42l-15 3c-3-15-3-33-3-49 0-20 2-38 0-50-2-12-12-22-26-24z" style="fill:var(--hair,#1F0F0A)"/>
+        <path d="M80 78c-2 18-2 40-4 62M140 78c2 18 2 40 4 62" stroke="#7A5240" stroke-width="2.2" opacity=".85"/>
+        <path d="M110 52v10" stroke="#5A3828" stroke-width="1.4"/>
+        <circle cx="85" cy="125" r="6.5" stroke="#E8B23A" stroke-width="3"/>
+        <circle cx="135" cy="125" r="6.5" stroke="#E8B23A" stroke-width="3"/>
       </g>
     </symbol>
-    <symbol id="doll-head" viewBox="26 4 168 162"><use href="#doll" x="0" y="0" width="220" height="420"/></symbol>
+    <symbol id="doll-head" viewBox="54 42 112 112"><use href="#doll" x="0" y="0" width="220" height="420"/></symbol>
 
     <!-- ═══ Room scenes (160 x 100) ═══ -->
     <symbol id="sc-living" viewBox="0 0 160 100">
@@ -689,7 +711,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
       <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
     </button>
-    <a class="btn btn-pink btn-sm" href="#front-door" data-enter><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg><span class="contact-label">Contact</span></a>
+    <button class="btn btn-pink btn-sm" type="button" data-contact aria-label="Contact me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg><span class="contact-label">Contact me</span></button>
   </div>
 </header>
 
@@ -707,7 +729,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
       </ul>
       <div class="intro-actions">
         <a class="btn btn-pink" href="#living-room" data-enter>Start the tour <span aria-hidden="true">→</span></a>
-        <button class="btn" type="button" data-palette>Search the house</button>
+        <button class="btn" type="button" data-contact>Contact me</button>
       </div>
       <div class="visits"><span class="hearts" id="hearts" aria-hidden="true"></span><span id="visitText">0 of 10 rooms visited</span><a class="text-link" href="#all">See every room on one page</a></div>
     </section>
@@ -725,7 +747,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
         </div>
         <div class="house-body">
           <a class="room-tile wp-lilac" href="#ai-lab" data-enter data-room="ai-lab"><svg class="rt-scene" viewBox="0 0 160 100" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#sc-lab"/></svg><span class="plate">AI Lab</span><svg class="vh" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-heart"/></svg></a>
-          <div class="elevator" aria-hidden="true"><div class="car"><div class="car-window"><svg viewBox="26 4 168 162"><use href="#doll-head"/></svg></div><span class="car-floor">1</span></div></div>
+          <div class="elevator" aria-hidden="true"><div class="car"><div class="car-window"><svg viewBox="0 0 100 100"><use href="#doll-head" width="100" height="100"/></svg></div><span class="car-floor">1</span></div></div>
           <a class="room-tile wp-damask" href="#library" data-enter data-room="library"><svg class="rt-scene" viewBox="0 0 160 100" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#sc-library"/></svg><span class="plate">The Library</span><svg class="vh" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-heart"/></svg></a>
           <a class="room-tile wp-dots" href="#command-center" data-enter data-room="command-center"><svg class="rt-scene" viewBox="0 0 160 100" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#sc-command"/></svg><span class="plate">Command Center</span><svg class="vh" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-heart"/></svg></a>
           <a class="room-tile wp-peach" href="#passport-suite" data-enter data-room="passport-suite"><svg class="rt-scene" viewBox="0 0 160 100" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#sc-passport"/></svg><span class="plate">Passport Suite</span><svg class="vh" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-heart"/></svg></a>
@@ -1557,6 +1579,20 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
     </div>
     <div class="room-frame wp-sky"><svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#sc-door"/></svg></div>
   </header>
+  <section class="room-section" id="front-door--contact">
+    <div class="contact-panel">
+      <div class="contact-thanks">Thank you for reviewing my portfolio.</div>
+      <p class="contact-sub">Have a role, a project, or a question in mind? Send me a note and I&rsquo;ll get back to you.</p>
+      <div class="contact-actions">
+        <button class="btn btn-pink" type="button" data-contact><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg>Send me a message</button>
+        <button class="btn" type="button" data-copy="oluyadit@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>Copy email</button>
+        <a class="btn" href="https://www.linkedin.com/in/tolulope-oluyadi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>LinkedIn</a>
+        <a class="btn" href="https://github.com/tolulopeoluyadi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>GitHub</a>
+      </div>
+      <div class="contact-email"><a href="mailto:oluyadit@gmail.com">oluyadit@gmail.com</a></div>
+      <div class="contact-foot">Tolulope Oluyadi &middot; Project Manager &amp; Business Analyst &middot; Washington, DC area</div>
+    </div>
+  </section>
   <section class="room-section" id="front-door--thread">
     <div class="section-label">What Connects It All</div>
     <div class="section-title">People, Process, Data</div>
@@ -1564,19 +1600,6 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
       <div class="pillar"><div class="pillar-title">People</div><div class="pillar-desc">Stakeholder alignment, change management, user research, trust design</div></div>
       <div class="pillar"><div class="pillar-title">Process</div><div class="pillar-desc">Workflow design, Source-to-Pay delivery, implementation playbooks, feedback loops</div></div>
       <div class="pillar"><div class="pillar-title">Data</div><div class="pillar-desc">Mixed methods, evaluation frameworks, AI testing, evidence-based iteration</div></div>
-    </div>
-  </section>
-  <section class="room-section" id="front-door--contact">
-    <div class="contact-panel">
-      <div class="contact-thanks">Thank you for reviewing my portfolio.</div>
-      <div class="contact-actions">
-        <a class="btn btn-pink" href="mailto:oluyadit@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg>Email me</a>
-        <button class="btn" type="button" data-copy="oluyadit@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>Copy email</button>
-        <a class="btn" href="https://www.linkedin.com/in/tolulope-oluyadi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>LinkedIn</a>
-        <a class="btn" href="https://github.com/tolulopeoluyadi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>GitHub</a>
-      </div>
-      <div class="contact-email">oluyadit@gmail.com</div>
-      <div class="contact-foot">Tolulope Oluyadi &middot; Project Manager &amp; Business Analyst &middot; Washington, DC area</div>
     </div>
   </section>
 </article>
@@ -1607,6 +1630,45 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
   <div class="pal-foot"><span>&uarr; &darr; to move</span><span>Enter to open</span><span>Esc to close</span></div>
 </dialog>
 
+<dialog class="contact" id="contact" aria-labelledby="contactTitle">
+  <form class="contact-form" id="contactForm" novalidate>
+    <div class="contact-head">
+      <div class="contact-doll" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#doll-head" width="100" height="100"/></svg></div>
+      <div>
+        <span class="contact-kicker">Ring the bell</span>
+        <h2 id="contactTitle">Send me a message</h2>
+        <p>Whether it&rsquo;s a role, a project, or a quick question, I&rsquo;d love to hear from you.</p>
+      </div>
+      <button type="button" class="contact-close" data-close aria-label="Close">&times;</button>
+    </div>
+    <div class="field-row">
+      <label class="field"><span>Your name</span><input name="name" type="text" required autocomplete="name"></label>
+      <label class="field"><span>Your email</span><input name="email" type="email" required autocomplete="email"></label>
+    </div>
+    <label class="field"><span>What&rsquo;s this about?</span>
+      <select name="topic">
+        <option>A job opportunity</option>
+        <option>A project or collaboration</option>
+        <option>A coffee chat</option>
+        <option>Something else</option>
+      </select>
+    </label>
+    <label class="field"><span>Message</span><textarea name="message" rows="5" required placeholder="Tell me a little about what you have in mind"></textarea></label>
+    <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p class="form-error" id="formError" role="alert" hidden></p>
+    <div class="contact-row">
+      <button class="btn btn-pink" type="submit" id="sendBtn">Send message</button>
+      <span class="contact-or">or email <a href="mailto:oluyadit@gmail.com">oluyadit@gmail.com</a></span>
+    </div>
+  </form>
+  <div class="contact-done" id="contactDone" hidden>
+    <div class="contact-doll big" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#doll-head" width="100" height="100"/></svg></div>
+    <div class="done-title">Message sent!</div>
+    <p class="done-text">Thank you for reaching out. I&rsquo;ll get back to you soon.</p>
+    <button class="btn" type="button" data-close>Back to the house tour</button>
+  </div>
+</dialog>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -1628,7 +1690,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
     { id: 'poolside-bar', name: 'Poolside Bar', portal: 'Poolside Bar', floor: 'Yard', wp: 'wp-sky', persona: 'Business Builder Tolulope', project: 'Sipfinity · Mixology Events', say: 'Sipfinity! I built the business side of my sister&rsquo;s mixology company.', icon: 'sc-bar', keys: 'sipfinity mixology bartending events small business entrepreneur side project pricing business model invoices booking sister' },
     { id: 'garden-room', name: 'Garden Room', portal: 'Garden Room', floor: 'Yard', wp: 'wp-sky', persona: 'Community Leader Tolulope', project: 'Community, teaching & policy', say: 'Where I give back: Black Girls Code, NSBE, and cyber policy work.', icon: 'sc-garden', keys: 'community black girls code bgc nsbe torch cyber policy cpli fellow fellowship mentorship mentoring teaching volunteering leadership' },
     { id: 'closet', name: 'Walk-in Closet', portal: 'Walk-in Closet', floor: 'F1', wp: 'wp-gingham', persona: 'What I Wear to Work', project: 'Tools, methods & training', say: 'Everything I wear to work: my methods, tools, and training.', icon: 'sc-closet', keys: 'skills tools toolkit methods training certifications agile scrum iiba business analysis confluence azure devops sql r bigquery excel visio qualtrics mixpanel github aws react' },
-    { id: 'front-door', name: 'Front Door', portal: 'Front Door', floor: 'Yard', wp: 'wp-sky', persona: 'Let’s Connect', project: 'Contact', say: 'Want to work together? Ring the bell.', icon: 'sc-door', keys: 'contact email linkedin github hire reach out connect thank you' },
+    { id: 'front-door', name: 'Front Door', portal: 'Front Door', floor: 'Yard', wp: 'wp-sky', persona: 'Let’s Connect', project: 'Contact', say: 'Want to work together? Ring the bell and send me a message.', icon: 'sc-door', keys: 'contact email linkedin github hire reach out connect thank you' },
   ];
   const byId = new Map(ROOMS.map((r, i) => [r.id, { ...r, index: i }]));
   const FLOOR_NAME = { F1: 'Floor 1', F2: 'Floor 2', F3: 'Floor 3', Attic: 'Attic', Yard: 'The Yard' };
@@ -1887,6 +1949,8 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
     if (enter) { enterFrom(e, enter, enter.getAttribute('href').slice(1)); return; }
     const pal = e.target.closest('[data-palette]');
     if (pal) { e.preventDefault(); openPalette(); return; }
+    const contactBtn = e.target.closest('[data-contact]');
+    if (contactBtn) { e.preventDefault(); openContact(); return; }
     const copy = e.target.closest('[data-copy]');
     if (copy) { copyEmail(copy.dataset.copy); }
   });
@@ -1911,6 +1975,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
     { id: 'act-home', name: 'Back to the house', sub: 'See every room at once', glyph: '⌂', keys: 'home house map outside overview', run: goHome },
     { id: 'act-all', name: 'See every room on one page', sub: 'Best for skimming or printing', glyph: '☰', keys: 'all scroll print one page classic list', run: () => go('all') },
     { id: 'act-theme', name: 'Lights up or down', sub: 'Switch between day and evening', glyph: '☾', keys: 'dark night light day theme lights mode', run: () => themeBtn.click() },
+    { id: 'act-contact', name: 'Send Tolulope a message', sub: 'Open the contact form', glyph: '✿', keys: 'contact message form hire reach out email get in touch', run: () => openContact() },
     { id: 'act-email', name: 'Email Tolulope', sub: 'oluyadit@gmail.com', glyph: '✉', keys: 'email contact mail message', run: () => { location.href = 'mailto:oluyadit@gmail.com'; } },
     { id: 'act-copy', name: 'Copy email address', sub: 'oluyadit@gmail.com', glyph: '@', keys: 'copy email clipboard', run: () => copyEmail('oluyadit@gmail.com') },
     { id: 'act-github', name: 'Open GitHub', sub: 'github.com/tolulopeoluyadi', glyph: 'gh', keys: 'github code repos projects', run: () => { const l = document.createElement('a'); l.href = 'https://github.com/tolulopeoluyadi'; l.target = '_blank'; l.rel = 'noopener'; document.body.appendChild(l); l.click(); l.remove(); } },
@@ -1984,10 +2049,81 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
   palList.addEventListener('click', e => { const li = e.target.closest('.pal-item'); if (li) runPal(+li.dataset.i); });
   palette.addEventListener('click', e => { if (e.target === palette) closePalette(); });
 
+
+  /* ── Contact form ── */
+  const CONTACT_EMAIL = 'oluyadit@gmail.com';
+  const contactDlg = $('#contact');
+  const form = $('#contactForm');
+  const fields = form.elements;
+  const doneView = $('#contactDone');
+  const formError = $('#formError');
+  const sendBtn = $('#sendBtn');
+  function openContact() {
+    form.hidden = false;
+    doneView.hidden = true;
+    formError.hidden = true;
+    if (typeof contactDlg.showModal === 'function') { if (!contactDlg.open) contactDlg.showModal(); } else contactDlg.setAttribute('open', '');
+    setTimeout(() => fields.namedItem('name').focus(), 30);
+  }
+  function closeContact() {
+    if (typeof contactDlg.close === 'function' && contactDlg.open) contactDlg.close(); else contactDlg.removeAttribute('open');
+  }
+  contactDlg.addEventListener('click', e => {
+    if (e.target === contactDlg || e.target.closest('[data-close]')) closeContact();
+  });
+  const mailtoHref = d => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(d._subject)}&body=${encodeURIComponent(`${d.message}\n\n${d.name}\n${d.email}`)}`;
+  ['name', 'email', 'message'].forEach(n => fields.namedItem(n).addEventListener('input', e => { e.target.classList.remove('invalid'); formError.hidden = true; }));
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    formError.hidden = true;
+    const bad = ['name', 'email', 'message'].map(n => fields.namedItem(n)).filter(el => !el.value.trim() || !el.checkValidity());
+    bad.forEach(el => el.classList.add('invalid'));
+    if (bad.length) {
+      formError.textContent = bad[0].name === 'email' && bad[0].value.trim()
+        ? 'That email doesn’t look quite right. Could you check it so I can reply?'
+        : 'Please add your name, your email, and a short message.';
+      formError.hidden = false;
+      bad[0].focus();
+      return;
+    }
+    if (fields.namedItem('_honey').value) { form.hidden = true; doneView.hidden = false; return; }
+    const d = {
+      name: fields.namedItem('name').value.trim(),
+      email: fields.namedItem('email').value.trim(),
+      topic: fields.namedItem('topic').value,
+      message: fields.namedItem('message').value.trim(),
+    };
+    d._subject = `Portfolio message from ${d.name}: ${d.topic}`;
+    d._replyto = d.email;
+    d._template = 'table';
+    d._captcha = 'false';
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending…';
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(d),
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || String(out.success) === 'false') throw new Error(out.message || 'Send failed');
+      form.reset();
+      form.hidden = true;
+      doneView.hidden = false;
+      $('button', doneView).focus();
+    } catch (err) {
+      formError.innerHTML = `Sorry, that didn’t go through. You can <a href="${mailtoHref(d)}">send it by email instead</a>; your message will be filled in for you.`;
+      formError.hidden = false;
+    } finally {
+      sendBtn.disabled = false;
+      sendBtn.textContent = 'Send message';
+    }
+  });
+
   /* ── Keyboard ── */
   document.addEventListener('keydown', e => {
     if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) { e.preventDefault(); palette.open ? closePalette() : openPalette(); return; }
-    if (palette.open) return;
+    if (palette.open || contactDlg.open) return;
     if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable) return;
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     if (e.key === '/') { e.preventDefault(); openPalette(); return; }
