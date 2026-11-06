@@ -113,7 +113,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
 
 .scene { position: relative; display: grid; grid-template-columns: 190px minmax(0, 480px); justify-content: center; align-items: end; column-gap: 10px; }
 .doll-col { position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 12px; }
-.doll-stand { width: 122px; }
+.doll-stand { width: 116px; }
 .doll-stand svg { display: block; width: 100%; height: auto; filter: drop-shadow(5px 5px 0 rgba(58,16,34,.12)); }
 .bubble { position: relative; width: 100%; margin-bottom: 18px; padding: 14px 16px 15px; background: var(--card); border: 2.5px solid var(--line); border-radius: 20px; box-shadow: 4px 4px 0 var(--pink-soft); font-size: 14px; line-height: 1.5; }
 .bubble::after { content: ''; position: absolute; left: 50%; bottom: -12px; width: 20px; height: 20px; margin-left: -10px; background: var(--card); border-right: 2.5px solid var(--line); border-bottom: 2.5px solid var(--line); transform: rotate(45deg); }
@@ -207,17 +207,21 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
 .next-sub { display: block; font-size: 13px; color: var(--muted); }
 
 /* ─── Doll box (Living Room) ─── */
-.doll-box { position: relative; width: min(320px, 100%); margin: 0 auto; padding: 74px 20px 64px; border: 3px solid var(--line); border-radius: 26px 26px 12px 12px; background: linear-gradient(160deg, #FF5FA8, #E0218A 55%, #C3127A); box-shadow: 12px 12px 0 var(--hard); }
+.doll-box { position: relative; width: min(410px, 100%); margin: 0 auto; padding: 76px 16px 16px; border: 3px solid var(--line); border-radius: 26px 26px 14px 14px; background: linear-gradient(160deg, #FF5FA8, #E0218A 55%, #C3127A); box-shadow: 12px 12px 0 var(--hard); }
 .box-top { position: absolute; top: 12px; left: 0; right: 0; text-align: center; color: #fff; }
 .box-name { display: block; font-family: var(--script); font-size: 46px; line-height: 1; text-shadow: 2px 2px 0 #8E0B55; }
 .box-sub { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; margin-top: 2px; }
-.box-window { position: relative; height: 340px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; border: 3px solid var(--line); border-radius: 130px 130px 10px 10px; background-color: #FFF4F9; background-image: linear-gradient(90deg, rgba(255,95,168,.14) 50%, transparent 50%), linear-gradient(rgba(255,95,168,.14) 50%, transparent 50%); background-size: 22px 22px; }
-.box-window svg { height: 94%; width: auto; position: relative; z-index: 1; }
-.box-window::after { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.5) 0%, transparent 9%, transparent 74%, rgba(255,255,255,.35) 79%, transparent 85%); }
-.box-foot { position: absolute; left: 14px; right: 14px; bottom: 14px; text-align: center; color: #fff; font-size: 12px; font-weight: 600; line-height: 1.35; }
-.box-burst { position: absolute; right: -26px; top: 70px; z-index: 3; width: 100px; height: 100px; transform: rotate(12deg); }
-.box-burst svg { width: 100%; height: 100%; }
-.box-burst span { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; font: 800 12px/1.1 var(--body); color: var(--line); padding: 18px; }
+.box-window { position: relative; height: 430px; display: grid; grid-template-columns: 1.05fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 8px; padding: 10px 10px 10px 4px; overflow: hidden; border: 3px solid var(--line); border-radius: 16px; background: linear-gradient(180deg, #FFE7F2, #FFD3E7); }
+.box-window::after { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.55) 0%, transparent 10%, transparent 72%, rgba(255,255,255,.35) 78%, transparent 84%); }
+.box-doll { position: relative; z-index: 1; height: 100%; min-height: 0; display: flex; align-items: flex-end; justify-content: center; }
+.box-doll svg { height: 100%; width: auto; max-width: 100%; }
+.acc-grid { position: relative; z-index: 1; height: 100%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(6, 1fr); gap: 6px; min-height: 0; }
+.acc { min-height: 0; display: grid; place-items: center; padding: 5px; border-radius: 12px; background: rgba(255,255,255,.5); border: 1.5px solid rgba(255,255,255,.95); box-shadow: inset 0 0 0 1px rgba(224,33,138,.18), 0 2px 4px rgba(176,16,106,.12); }
+.acc.wide { grid-column: span 2; }
+.acc svg { width: 100%; height: 100%; min-height: 0; display: block; overflow: visible; }
+.acc { overflow: hidden; }
+.acc-card span { font-family: var(--script); font-size: 21px; color: var(--pink-deep); background: #FFF6EC; border: 1.5px solid #E3B341; border-radius: 6px; padding: 1px 14px 3px; }
+[data-theme="night"] .acc-card span { color: #B0106A; }
 
 /* ─── Content blocks ─── */
 .section-label { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--pink-deep); margin-bottom: 8px; }
@@ -461,7 +465,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
   .yard { gap: 6px; }
   .tags { gap: 12px; } .tag { flex-basis: 140px; } .tag-num { font-size: 26px; }
   .dock-btn .dock-name { display: none; }
-  .box-burst { right: -8px; }
+  .box-window { height: 380px; }
 }
 @media (hover: none) { kbd, .guide-item.keys { display: none; } .guide { grid-template-columns: 1fr; } }
 </style>
@@ -471,49 +475,52 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <!-- ═══ The doll (original character) ═══ -->
-    <symbol id="doll" viewBox="0 0 220 420">
-      <g fill="none" stroke="#3A1022" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M110 46C78 46 66 70 66 102l-4 98c0 10 8 14 18 12h60c10 2 18-2 18-12l-4-98c0-32-12-56-44-56z" style="fill:var(--hair,#1F0F0A)"/>
-        <path d="M100 126v24h20v-24" style="fill:var(--skin,#8B5A3C)"/>
-        <ellipse cx="110" cy="100" rx="31" ry="35" style="fill:var(--skin,#8B5A3C)"/>
-        <path d="M93 89q6-3.5 12-1M115 88q6-2.5 12 1" stroke="#1F0F0A" stroke-width="2.6"/>
-        <ellipse cx="98" cy="100" rx="4.2" ry="5" fill="#2A120A" stroke="none"/>
-        <ellipse cx="122" cy="100" rx="4.2" ry="5" fill="#2A120A" stroke="none"/>
-        <circle cx="99.6" cy="98.2" r="1.5" fill="#fff" stroke="none"/><circle cx="123.6" cy="98.2" r="1.5" fill="#fff" stroke="none"/>
-        <path d="M93.5 96.5l-3-2.2M126.5 96.5l3-2.2" stroke="#2A120A" stroke-width="1.6"/>
-        <path d="M108 104q3 6-1 8q3 1.5 6 0" stroke="#5E3622" stroke-width="1.6"/>
-        <ellipse cx="91" cy="111" rx="6" ry="3.5" fill="#FF6FA8" opacity=".38" stroke="none"/>
-        <ellipse cx="129" cy="111" rx="6" ry="3.5" fill="#FF6FA8" opacity=".38" stroke="none"/>
-        <path d="M101 118q9 7 18 0q-9 2.5-18 0z" fill="#C2185B" stroke="#8E1046" stroke-width="1.4"/>
-        <path d="M70 244h80l8 148h-38l-10-112-10 112H62z" fill="#E0218A"/>
-        <path d="M88 262l-7 126M132 262l7 126" stroke="#B0106A" stroke-width="1.5"/>
-        <path d="M64 392h34l3 9H61zM122 392h34l4 9h-41z" fill="#B0106A"/>
-        <path d="M74 166c2-12 16-18 36-18s34 6 36 18l6 80H68z" fill="#E0218A"/>
-        <path d="M99 150l11 36 11-36z" fill="#FFF6EC"/>
-        <path d="M99 150l11 36-9 20-15-44zM121 150l-11 36 9 20 15-44z" fill="#B0106A"/>
-        <g fill="#FFFFFF" stroke="#3A1022" stroke-width="1"><circle cx="101.5" cy="153" r="2.1"/><circle cx="104" cy="158" r="2.1"/><circle cx="107" cy="161.5" r="2.1"/><circle cx="110" cy="163" r="2.1"/><circle cx="113" cy="161.5" r="2.1"/><circle cx="116" cy="158" r="2.1"/><circle cx="118.5" cy="153" r="2.1"/></g>
-        <path d="M128 188l12-2" stroke="#B0106A" stroke-width="1.6"/>
-        <path d="M130 186l3-6 4 5z" fill="#FFF6EC" stroke-width="1.2"/>
-        <rect x="70" y="240" width="80" height="8" fill="#B0106A"/>
-        <rect x="104" y="238.5" width="12" height="11" rx="2" fill="#E8B23A"/>
-        <circle cx="110" cy="216" r="2.6" fill="#E8B23A"/><circle cx="110" cy="229" r="2.6" fill="#E8B23A"/>
-        <path d="M80 166l-22 44 22 28" stroke="#3A1022" stroke-width="24"/>
-        <path d="M80 166l-22 44 22 28" stroke="#E0218A" stroke-width="19"/>
-        <circle cx="82" cy="238" r="8" style="fill:var(--skin,#8B5A3C)"/>
-        <rect x="138" y="204" width="50" height="33" rx="4" fill="#FFF6EC"/>
-        <path d="M163 228c-5-3.6-6.6-6.8-3.9-8.3 1.6-.9 3.2.1 3.9 1.2.7-1.1 2.3-2.1 3.9-1.2 2.7 1.5 1.1 4.7-3.9 8.3z" fill="#E0218A" stroke="none"/>
-        <path d="M140 166l22 40-12 18" stroke="#3A1022" stroke-width="24"/>
-        <path d="M140 166l22 40-12 18" stroke="#E0218A" stroke-width="19"/>
-        <circle cx="150" cy="226" r="8" style="fill:var(--skin,#8B5A3C)"/>
-        <path d="M110 52C88 52 76 64 75 86c-1 18 0 36-2 54-1 16-4 30-7 42l15 3c3-15 3-33 3-49 0-20-2-38 0-50 2-12 12-22 26-24z" style="fill:var(--hair,#1F0F0A)"/>
-        <path d="M110 52c22 0 34 12 35 34 1 18 0 36 2 54 1 16 4 30 7 42l-15 3c-3-15-3-33-3-49 0-20 2-38 0-50-2-12-12-22-26-24z" style="fill:var(--hair,#1F0F0A)"/>
-        <path d="M80 78c-2 18-2 40-4 62M140 78c2 18 2 40 4 62" stroke="#7A5240" stroke-width="2.2" opacity=".85"/>
-        <path d="M110 52v10" stroke="#5A3828" stroke-width="1.4"/>
-        <circle cx="85" cy="125" r="6.5" stroke="#E8B23A" stroke-width="3"/>
-        <circle cx="135" cy="125" r="6.5" stroke="#E8B23A" stroke-width="3"/>
+    <symbol id="doll" viewBox="0 0 220 460">
+      <g fill="none" stroke="#2A0D18" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M110 34C82 34 72 56 76 84c-2 22-2 46 4 66 6 8 12 0 12-10l38 0c4 20 20 22 20 6 4-30 0-50-4-64 2-30-10-48-36-48z" fill="#3A2015"/>
+        <path d="M102 92v20h16V92" style="fill:var(--skin,#8E5838)"/>
+        <!-- trousers + heels -->
+        <path d="M86 244h48l14 186h-34l-4-138-4 138H72z" fill="#E0218A"/>
+        <path d="M96 262l-6 164M124 262l6 164" stroke="#B0106A" stroke-width="1.5"/>
+        <path d="M80 430h20l2 8H78zM118 430h20l3 8h-23z" fill="#E3B341"/>
+        <!-- blazer -->
+        <path d="M82 118c2-8 12-10 22-12l6 6 6-6c10 2 20 4 22 12v42c-2 16-8 26-10 34 4 16 8 34 8 56H84c0-22 4-40 8-56-2-8-8-18-10-34z" fill="#E0218A"/>
+        <path d="M104 106l6 44 6-44z" fill="#FFF6EC"/>
+        <path d="M104 106l-12 24 18 66zM116 106l12 24-18 66z" fill="#B0106A"/>
+        <path d="M90 224h13M117 224h13" stroke="#B0106A" stroke-width="1.8"/>
+        <path d="M121 142l9-2-2 7z" fill="#FFF6EC" stroke-width="1.2"/>
+        <circle cx="110" cy="198" r="2.8" fill="#E3B341"/>
+        <path d="M94 132c0 18 0 34 2 50" stroke="#FF5FA8" stroke-width="2.6" opacity=".8"/>
+        <!-- sleeves: hand on hip (left), relaxed (right) -->
+        <path d="M87 120l-15 46 16 26" stroke="#2A0D18" stroke-width="15"/>
+        <path d="M87 120l-15 46 16 26" stroke="#E0218A" stroke-width="11"/>
+        <ellipse cx="92" cy="196" rx="6" ry="5" style="fill:var(--skin,#8E5838)"/>
+        <path d="M84 188l7 5M82 192l7 5" stroke="#E3B341" stroke-width="2.4"/>
+        <path d="M134 120l10 50-3 46" stroke="#2A0D18" stroke-width="15"/>
+        <path d="M134 120l10 50-3 46" stroke="#E0218A" stroke-width="11"/>
+        <ellipse cx="141" cy="224" rx="4.8" ry="7" style="fill:var(--skin,#8E5838)"/>
+        <!-- face -->
+        <ellipse cx="88" cy="76" rx="4.5" ry="6" style="fill:var(--skin,#8E5838)"/>
+        <ellipse cx="110" cy="72" rx="23" ry="28" style="fill:var(--skin,#8E5838)"/>
+        <path d="M96 64q6-4 11-1.5M113 62.5q5-2.5 11 1.5" stroke="#1E0F0A" stroke-width="2.2"/>
+        <path d="M97 73q5-4.2 10 0q-5 3-10 0z" fill="#22100A" stroke-width="1.2"/>
+        <path d="M114 73q5-4.2 10 0q-5 3-10 0z" fill="#22100A" stroke-width="1.2"/>
+        <circle cx="103" cy="72" r="1.1" fill="#fff" stroke="none"/><circle cx="120" cy="72" r="1.1" fill="#fff" stroke="none"/>
+        <path d="M97 72.6l-3.4-2.2M124 72.6l3.4-2.2" stroke="#22100A" stroke-width="1.5"/>
+        <path d="M109 76q2.4 6.4-1 8.6q2.6 1.2 5.2 0" stroke="#5A3220" stroke-width="1.4"/>
+        <ellipse cx="98" cy="83" rx="4.5" ry="2.6" fill="#E77AA0" opacity=".3" stroke="none"/>
+        <ellipse cx="122" cy="83" rx="4.5" ry="2.6" fill="#E77AA0" opacity=".3" stroke="none"/>
+        <path d="M103.5 90.5q3.5-3 6.5-1q3-2 6.5 1q-6.5 2.2-13 0z" fill="#93394F" stroke="#6E2235" stroke-width="1"/>
+        <path d="M103.5 90.5q6.5 5.6 13 0q-6.5 1.8-13 0z" fill="#B04B65" stroke="#6E2235" stroke-width="1"/>
+        <path d="M86.5 80q-4.5 6 0 12q4.5-6 0-12z" fill="#E3B341" stroke-width="1.2"/>
+        <!-- front hair: deep side part, waves over one shoulder -->
+        <path d="M110 38c-18 0-27 12-26 28 5-10 12-15 18-16 10 2 24 8 32 22 3-20-6-34-24-34z" fill="#3A2015"/>
+        <path d="M128 52c14 6 18 22 16 38 6 12-2 22 2 34 4 14-6 24-1 36 3 12-5 24-13 20 4-10-2-20 2-32 3-12-5-22 0-34 4-12-2-24-6-32z" fill="#3A2015"/>
+        <path d="M134 74c4 10 1 18 4 26M139 112c3 9-1 16 1 26M136 150c2 8-1 14 0 22M104 44c10 2 20 8 26 18M80 96c-1 12 0 24 2 36" stroke="#7A4A2C" stroke-width="2" opacity=".9"/>
+        <path d="M102 50l-1 6" stroke="#22120B" stroke-width="1.2"/>
       </g>
     </symbol>
-    <symbol id="doll-head" viewBox="54 42 112 112"><use href="#doll" x="0" y="0" width="220" height="420"/></symbol>
+    <symbol id="doll-head" viewBox="70 34 80 80"><use href="#doll" x="0" y="0" width="220" height="460"/></symbol>
 
     <!-- ═══ Room scenes (160 x 100) ═══ -->
     <symbol id="sc-living" viewBox="0 0 160 100">
@@ -706,6 +713,43 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
       </g>
     </symbol>
 
+
+    <symbol id="acc-mat" viewBox="0 0 120 44"><g stroke="#2A0D18" stroke-width="2" stroke-linejoin="round">
+      <rect x="8" y="6" width="104" height="32" rx="16" fill="#F05AA0"/>
+      <ellipse cx="104" cy="22" rx="10" ry="16" fill="#FF8CC2"/>
+      <path d="M104 14a6 8 0 1 0 0.1 0" fill="none" stroke-width="1.5"/>
+      <rect x="30" y="4" width="9" height="36" rx="2" fill="#C2185B"/><rect x="72" y="4" width="9" height="36" rx="2" fill="#C2185B"/>
+      <path d="M14 14h80M14 22h80M14 30h80" stroke="#FFB3D6" stroke-width="1.2" opacity=".8"/></g></symbol>
+    <symbol id="acc-ring" viewBox="0 0 80 80"><g stroke="#2A0D18" stroke-width="2">
+      <circle cx="40" cy="40" r="28" fill="none" stroke="#2A0D18" stroke-width="10"/>
+      <circle cx="40" cy="40" r="28" fill="none" stroke="#FF5FA8" stroke-width="6.5"/>
+      <rect x="4" y="30" width="10" height="20" rx="4" fill="#2A0D18"/><rect x="66" y="30" width="10" height="20" rx="4" fill="#2A0D18"/></g></symbol>
+    <symbol id="acc-laptop" viewBox="0 0 110 70"><g stroke="#2A0D18" stroke-width="2" stroke-linejoin="round">
+      <rect x="14" y="6" width="82" height="52" rx="4" fill="#D9DCE3"/>
+      <path d="M6 58h98l-4 7H10z" fill="#BFC3CC"/>
+      <path d="M55 38c-5.5-4-7.2-7.6-4.2-9.3 1.8-1 3.6.1 4.2 1.3.6-1.2 2.4-2.3 4.2-1.3 3 1.7 1.3 5.3-4.2 9.3z" fill="#FF5FA8" stroke-width="1.2"/></g></symbol>
+    <symbol id="acc-passport" viewBox="0 0 60 80"><g stroke="#2A0D18" stroke-width="2">
+      <rect x="6" y="4" width="48" height="70" rx="4" fill="#1C2A55"/>
+      <circle cx="30" cy="40" r="11" fill="none" stroke="#E3B341" stroke-width="2"/>
+      <path d="M19 40h22M30 29v22M22 33q8 3 16 0M22 47q8-3 16 0" fill="none" stroke="#E3B341" stroke-width="1.4"/>
+      <rect x="18" y="14" width="24" height="4" rx="1.5" fill="#E3B341" stroke="none"/>
+      <rect x="26" y="60" width="8" height="5" rx="1" fill="#E3B341" stroke="none"/></g></symbol>
+    <symbol id="acc-matcha" viewBox="0 0 60 84"><g stroke="#2A0D18" stroke-width="2" stroke-linejoin="round">
+      <path d="M36 4l-6 18" stroke-width="3"/>
+      <path d="M12 22h36l-5 56H17z" fill="#EAF6E7"/>
+      <path d="M14 36h32l-3.8 42H17.8z" fill="#9BC46B"/>
+      <g fill="#5E7F3A" stroke="none"><rect x="20" y="46" width="6" height="6" rx="1"/><rect x="32" y="54" width="6" height="6" rx="1"/><rect x="24" y="62" width="6" height="6" rx="1"/></g>
+      <rect x="9" y="18" width="42" height="7" rx="3" fill="#FFFFFF"/></g></symbol>
+    <symbol id="acc-suitcase" viewBox="0 0 64 100"><g stroke="#2A0D18" stroke-width="2" stroke-linejoin="round">
+      <path d="M22 26V6h20v20M26 6v20M38 6v20" fill="none" stroke="#9AA0AA" stroke-width="3"/>
+      <rect x="8" y="26" width="48" height="62" rx="7" fill="#FF8CC2"/>
+      <path d="M20 30v54M32 30v54M44 30v54" stroke="#F05AA0" stroke-width="2"/>
+      <circle cx="16" cy="92" r="4" fill="#2A0D18"/><circle cx="48" cy="92" r="4" fill="#2A0D18"/></g></symbol>
+    <symbol id="acc-cocktail" viewBox="0 0 70 84"><g stroke="#2A0D18" stroke-width="2" stroke-linejoin="round">
+      <path d="M8 18q27 34 54 0z" fill="#E2435E"/>
+      <path d="M8 18h54" />
+      <path d="M35 34v34M22 74h26" />
+      <circle cx="54" cy="16" r="9" fill="#F7A23A"/><path d="M54 7v18M45 16h18M48 10l12 12M60 10L48 22" stroke="#FFD08A" stroke-width="1.2"/></g></symbol>
     <symbol id="ic-house" viewBox="0 0 24 24">
       <path d="M2.5 11L12 3.2l9.5 7.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M5.5 10v10.5h13V10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
@@ -755,7 +799,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
     <section class="scene" aria-label="Rooms of the house">
       <div class="doll-col" aria-hidden="true">
         <div class="bubble" id="bubble"><span class="bubble-name">Hi, I&rsquo;m Tolulope!</span><span class="bubble-text">Every room in my house shows a different side of how I work. Pick one to step inside.</span></div>
-        <div class="doll-stand"><svg viewBox="0 0 220 420"><use href="#doll"/></svg></div>
+        <div class="doll-stand"><svg viewBox="0 0 220 460"><use href="#doll"/></svg></div>
       </div>
       <nav class="house" id="houseMap" aria-label="Rooms">
         <div class="roof">
@@ -797,11 +841,21 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
         <span class="room-tag">Cyber Policy Fellow &middot; CPLI</span>
       </div>
     </div>
-    <div class="doll-box" aria-label="Illustration of Tolulope as a doll in a pink box">
-      <div class="box-top"><span class="box-name">Tolulope</span><span class="box-sub">Manager &middot; Analyst &middot; Builder</span></div>
-      <div class="box-window"><svg viewBox="0 0 220 420" aria-hidden="true"><use href="#doll"/></svg></div>
-      <div class="box-burst" aria-hidden="true"><svg viewBox="0 0 100 100"><polygon points="50.0,2.0 57.6,11.7 68.4,5.7 71.7,17.6 83.9,16.1 82.4,28.3 94.3,31.6 88.3,42.4 98.0,50.0 88.3,57.6 94.3,68.4 82.4,71.7 83.9,83.9 71.7,82.4 68.4,94.3 57.6,88.3 50.0,98.0 42.4,88.3 31.6,94.3 28.3,82.4 16.1,83.9 17.6,71.7 5.7,68.4 11.7,57.6 2.0,50.0 11.7,42.4 5.7,31.6 17.6,28.3 16.1,16.1 28.3,17.6 31.6,5.7 42.4,11.7" fill="#E8B23A" stroke="#3A1022" stroke-width="2.5" stroke-linejoin="round"/></svg><span>Now with Gen&#8209;AI!</span></div>
-      <div class="box-foot">Accessories included: laptop, roadmap, sticky notes, and a very full calendar</div>
+    <div class="doll-box" role="img" aria-label="Illustration of Tolulope as a doll in a pink suit, boxed with a yoga mat, Pilates ring, laptop, passport, iced matcha, suitcase, cocktail, and a Sipfinity card">
+      <div class="box-top"><span class="box-name">Tolulope</span><span class="box-sub">People &middot; Process &middot; Data</span></div>
+      <div class="box-window">
+        <div class="box-doll"><svg viewBox="62 26 96 418" aria-hidden="true"><use href="#doll" width="220" height="460"/></svg></div>
+        <div class="acc-grid" aria-hidden="true">
+          <div class="acc wide"><svg viewBox="0 0 120 44"><use href="#acc-mat"/></svg></div>
+          <div class="acc wide"><svg viewBox="0 0 80 80"><use href="#acc-ring"/></svg></div>
+          <div class="acc wide"><svg viewBox="0 0 110 70"><use href="#acc-laptop"/></svg></div>
+          <div class="acc"><svg viewBox="0 0 60 80"><use href="#acc-passport"/></svg></div>
+          <div class="acc"><svg viewBox="0 0 60 84"><use href="#acc-matcha"/></svg></div>
+          <div class="acc"><svg viewBox="0 0 64 100"><use href="#acc-suitcase"/></svg></div>
+          <div class="acc"><svg viewBox="0 0 70 84"><use href="#acc-cocktail"/></svg></div>
+          <div class="acc wide acc-card"><span>Sipfinity</span></div>
+        </div>
+      </div>
     </div>
   </header>
   <div class="tags">
