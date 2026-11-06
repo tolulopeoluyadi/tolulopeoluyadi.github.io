@@ -333,6 +333,21 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
 .contact-email { font-size: 15px; font-weight: 600; color: var(--muted); }
 .contact-foot { font-size: 13px; color: var(--faint); margin-top: 16px; }
 
+
+.interns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px 22px; margin-top: 26px; }
+.intern-card { position: relative; padding: 30px 24px 22px; background: var(--card); border: 2.5px solid var(--line); border-radius: 20px; box-shadow: 5px 5px 0 var(--hard); }
+.intern-card::before { content: ''; position: absolute; top: -12px; left: 50%; width: 46px; height: 20px; margin-left: -23px; border: 2.5px solid var(--line); border-radius: 8px; background: var(--gold-bright); }
+.intern-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px; }
+.intern-org { font-family: var(--display); font-weight: 800; font-size: 27px; line-height: 1.1; }
+.intern-when { font-size: 13px; font-weight: 600; color: var(--faint); }
+.intern-role { font-family: var(--script); font-size: 23px; color: var(--pink); margin: 2px 0 12px; }
+.intern-card ul { list-style: none; display: grid; gap: 8px; margin-bottom: 16px; }
+.intern-card li { position: relative; padding-left: 20px; font-size: 14.5px; line-height: 1.6; color: var(--muted); }
+.intern-card li::before { content: ''; position: absolute; left: 2px; top: .58em; width: 8px; height: 8px; border-radius: 50%; background: var(--pink); }
+.intern-card li strong { font-weight: 600; color: var(--strong); }
+.intern-card .chip { font-size: 12.5px; padding: 4px 11px; }
+.facts .text-link { font-size: inherit; }
+
 /* ─── Dock, search, portal, toast ─── */
 .dock { position: fixed; left: 50%; bottom: 18px; z-index: 60; transform: translate(-50%, 170%); visibility: hidden; display: flex; align-items: center; gap: 4px; padding: 6px; border-radius: 999px; background: var(--card); border: 2.5px solid var(--line); box-shadow: 5px 5px 0 var(--pink-soft); transition: transform .45s cubic-bezier(.2,.8,.2,1), visibility 0s .45s; }
 .in-room .dock { transform: translate(-50%, 0); visibility: visible; transition: transform .45s cubic-bezier(.2,.8,.2,1), visibility 0s; }
@@ -423,7 +438,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
   .room-hero { grid-template-columns: 1fr; gap: 26px; }
   .room-frame { order: -1; max-width: 420px; }
   .doll-box { order: -1; }
-  .detail-grid, .research-context, .opp-grid, .opp-grid.three, .guide, .room-next, .racks, .mini-cards { grid-template-columns: 1fr; }
+  .detail-grid, .research-context, .opp-grid, .opp-grid.three, .guide, .room-next, .racks, .mini-cards, .interns { grid-template-columns: 1fr; }
   .detail-full > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
   .timeline { flex-wrap: wrap; row-gap: 10px; } .timeline::before { display: none; } .timeline-step { flex: 1 1 33%; }
   .comparison-table { display: block; overflow-x: auto; font-size: 13px; }
@@ -727,6 +742,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
       <ul class="facts">
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-heart"/></svg>Howard University, CS + Business, Magna Cum Laude</li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-heart"/></svg>Technical Project Manager &amp; Business Analyst, Johns Hopkins APL</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-heart"/></svg><span>Internships at Microsoft, Amazon, and NACo &middot; <a class="text-link" href="#living-room--internships">see them</a></span></li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-heart"/></svg>Cyber Policy Fellow, Cyber Policy Leadership Institute</li>
       </ul>
       <div class="intro-actions">
@@ -814,15 +830,58 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
     </div>
   </section>
 
+  <section class="room-section" id="living-room--internships">
+    <div class="section-label">Before APL</div>
+    <div class="section-title">My Internships</div>
+    <p class="section-subtitle">Four internships across engineering, program management, and data, each one teaching me a different side of how technology gets built and used.</p>
+    <div class="interns">
+      <div class="intern-card">
+        <div class="intern-top"><div class="intern-org">NACo</div><div class="intern-when">Sept 2024 &ndash; Feb 2025 &middot; Washington, DC</div></div>
+        <div class="intern-role">Product &amp; Data Analyst Intern</div>
+        <ul>
+          <li>Wrote <strong>SQL audits</strong> against a source-of-truth reference, cutting outdated records by <strong>40%</strong> on a platform serving 3,069 organizations</li>
+          <li>Configured a <strong>GPT-4 validator</strong> to cross-check CRM data inside the team&rsquo;s existing workflow</li>
+        </ul>
+        <div class="chips"><span class="chip">SQL</span><span class="chip">Data Quality</span><span class="chip">GPT-4</span><span class="chip">CRM</span></div>
+      </div>
+      <div class="intern-card">
+        <div class="intern-top"><div class="intern-org">Microsoft</div><div class="intern-when">Summer 2024 &middot; Redmond, WA</div></div>
+        <div class="intern-role">Technical Program Manager Intern</div>
+        <ul>
+          <li>Led network <strong>capacity and demand planning</strong> work, producing monthly cost estimation reports for 10+ product groups</li>
+          <li>Built a capacity request template and centralized request tool that improved forecasting accuracy by <strong>30%</strong> and made processing <strong>60% faster</strong></li>
+          <li>Designed an inorganic demand forecasting process combining compute, storage, and network signals, and set up its validation with <strong>3 cross-functional teams</strong></li>
+        </ul>
+        <div class="chips"><span class="chip">Azure</span><span class="chip">Capacity Planning</span><span class="chip">Forecasting</span><span class="chip">Program Management</span></div>
+      </div>
+      <div class="intern-card">
+        <div class="intern-top"><div class="intern-org">Amazon</div><div class="intern-when">Summer 2023 &middot; New York, NY</div></div>
+        <div class="intern-role">Software Engineer Intern</div>
+        <ul>
+          <li>Built a goal approval workflow UI in <strong>React</strong> that cut approval time by <strong>50%</strong></li>
+          <li>Added a justification field that raised user satisfaction ratings by <strong>30%</strong></li>
+          <li>Refined database schemas and goal service models in <strong>Java and SQL</strong> for <strong>25% faster</strong> queries</li>
+        </ul>
+        <div class="chips"><span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">Java</span><span class="chip">SQL</span></div>
+      </div>
+      <div class="intern-card">
+        <div class="intern-top"><div class="intern-org">Amazon</div><div class="intern-when">Summer 2022 &middot; Seattle, WA</div></div>
+        <div class="intern-role">Amazon Future Engineer</div>
+        <ul>
+          <li>Built a <strong>real-time dashboard on DynamoDB</strong> for the Overwatch data quality monitoring app, giving clearer visibility into job status and execution details</li>
+        </ul>
+        <div class="chips"><span class="chip">DynamoDB</span><span class="chip">Dashboards</span><span class="chip">Data Quality</span></div>
+      </div>
+    </div>
+  </section>
+
   <section class="room-section" id="living-room--career">
     <div class="section-label">The Photo Wall</div>
     <div class="section-title">Where I&rsquo;ve Worked</div>
     <div class="wall">
       <div class="wall-card"><div class="wall-org">Johns Hopkins APL</div><div class="wall-role">Technical Project Manager &amp; Business Analyst</div><div class="wall-when">2025 &ndash; 2026</div><p class="wall-text">Delivered enterprise platforms across procurement, legal intake, and AI routing. Served as Scrum Master for one-week sprints with monthly planning, wrote weekly quality reports for leadership on defects, backlog, risks, and fixes, ran business reviews, and built personas and user journeys for the teams I supported.</p></div>
       <div class="wall-card"><div class="wall-org">Sipfinity</div><div class="wall-role">Business Operations</div><div class="wall-when">2024 &ndash; present</div><p class="wall-text">Built the business side of my sister&rsquo;s Maryland mixology events company: pricing, packages, booking forms, invoices, and recipe books. <a href="#poolside-bar" data-enter>Visit the Poolside Bar</a></p></div>
-      <div class="wall-card"><div class="wall-org">NACo</div><div class="wall-role">Product &amp; Data Analyst</div><div class="wall-when">Earlier</div><p class="wall-text">Configured a GPT-4 validator inside the organization&rsquo;s CRM to check data quality.</p></div>
-      <div class="wall-card"><div class="wall-org">Amazon</div><div class="wall-role">Software Engineering Intern</div><div class="wall-when">Earlier</div><p class="wall-text">Built a goal approval workflow in React that cut approval cycle time by 50%.</p></div>
-      <div class="wall-card"><div class="wall-org">Microsoft</div><div class="wall-role">Intern</div><div class="wall-when">Earlier</div><p class="wall-text">Built a centralized capacity request tool that made request processing 60% faster.</p></div>
+      <div class="wall-card"><div class="wall-org">Internships</div><div class="wall-role">Microsoft, Amazon &amp; NACo</div><div class="wall-when">2022 &ndash; 2025</div><p class="wall-text">Program management at Microsoft, two summers of engineering at Amazon, and product and data work at NACo. <a href="#living-room--internships">See my internships</a></p></div>
       <div class="wall-card"><div class="wall-org">Howard University</div><div class="wall-role">Computer Science + Business</div><div class="wall-when">Magna Cum Laude &middot; 2025</div><p class="wall-text">Programs Chair for T.O.R.C.H. in Howard&rsquo;s NSBE chapter. <a href="#garden-room" data-enter>Visit the Garden Room</a></p></div>
     </div>
   </section>
@@ -1698,7 +1757,7 @@ kbd { font: 600 11px var(--body); padding: 2px 7px; border-radius: 6px; border: 
   const BASE_TITLE = 'Tolulope Oluyadi | Dream House Portfolio';
 
   const ROOMS = [
-    { id: 'living-room', name: 'Living Room', portal: 'Living Room', floor: 'F1', wp: 'wp-stripes', persona: 'Meet Tolulope', project: 'About me, my career, and off the clock', say: 'Start here. This is me, where I&rsquo;ve worked, and what I do off the clock.', icon: 'sc-living', keys: 'about me intro overview education howard career experience internships microsoft amazon naco resume hobbies interests reading books sewing design responsible ai ethics pilates lagree start tour' },
+    { id: 'living-room', name: 'Living Room', portal: 'Living Room', floor: 'F1', wp: 'wp-stripes', persona: 'Meet Tolulope', project: 'About me, my internships, and my career', say: 'Start here. This is me, my internships, where I&rsquo;ve worked, and what I do off the clock.', icon: 'sc-living', keys: 'about me intro overview education howard career experience internships intern microsoft amazon future engineer naco azure dynamodb resume hobbies interests reading books sewing design responsible ai ethics pilates lagree start tour' },
     { id: 'command-center', name: 'Command Center', portal: 'Command Center', floor: 'F2', wp: 'wp-dots', persona: 'Delivery Lead Tolulope', project: 'ProcureHub · ServiceNow Source-to-Pay', say: 'This is ProcureHub. I was assistant lead on moving a whole lab&rsquo;s purchasing onto one ServiceNow platform.', icon: 'sc-command', keys: 'procurehub servicenow source to pay s2p procurement purchasing qa uat sit testing requirements denodo reporting sop roadmap compliance release scrum' },
     { id: 'ai-lab', name: 'AI Lab', portal: 'AI Lab', floor: 'F3', wp: 'wp-lilac', persona: 'AI Builder Tolulope', project: 'Gen-AI Intake Routing', say: 'I built an AI router that sends requests to the right team, and to a person when it isn&rsquo;t sure.', icon: 'sc-lab', keys: 'ai gen-ai genai generative artificial intelligence llm routing triage model evaluation human in the loop confidence threshold prompt engineering ab testing automation agents claude chatgpt copilot n8n zapier responsible ai ethics' },
     { id: 'library', name: 'The Library', portal: 'Library', floor: 'F3', wp: 'wp-damask', persona: 'Process Designer Tolulope', project: 'Case IQ Implementation', say: 'Case IQ. I replaced email-driven legal intake with a case system that holds up under scrutiny.', icon: 'sc-library', keys: 'case iq legal compliance eeo ethics audits workflow change management stakeholder tradeoffs confidentiality rollout vendor management' },
